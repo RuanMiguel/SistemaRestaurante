@@ -1,0 +1,18 @@
+
+public class Funcionario {
+	private int id;
+	private String nome;
+	private String cpf;
+	private String senha;
+	
+	public Funcionario(int id, String nome, String cpf, String senha){
+		this.id = id;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+	}
+	
+	public static atualizarStatus(Pedido pedido){
+		
+	}
+}
