@@ -1,0 +1,13 @@
+
+public class Garcom {
+	private int totalGarcons;
+	
+	public Garcom(int totalGarcons) {
+		this.totalGarcons = totalGarcons;
+	}
+	
+	public static anotarPedido(Mesa mesa, Pedido pedido){
+		Comanda.adicionarPedido(pedido);
+		System.out.print("Pedido anotado!");
+	}
+}
