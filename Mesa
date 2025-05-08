@@ -1,0 +1,43 @@
+import java.util.List;
+
+public class Mesa {
+	private int numero;
+	private int capacidade;
+	private boolean ocupada;
+	
+	public Mesa(int numero, int capacidade, boolean isOcupada){
+		this.numero = numero;
+		this.capacidade = capacidade;
+		this.ocupada = false;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	
+	public boolean isOcupada() {
+		return true;
+	}
+	
+	public void ocupar() {
+		if(!ocupada) {
+			ocupada = true;
+			System.out.print("A mesa " + numero + " está ocupada");
+		}
+		
+	}
+	
+	public void liberar() {
+		if(ocupada) {
+			ocupada = false;
+			System.out.print("A mesa " + numero + " está livre");
+		}
+	}
+	
+	public static void listarDisponiveis(List<Mesa> mesas) {
+		for(Mesa m: mesas) {
+			if(!m.isOcupada()) {
+				System.out.println("Mesa " + m.getNumero());
+			}
+	}
+}
