@@ -1,0 +1,6 @@
+
+public class GerenciadorCozinha {
+	public static atualizarStatus(Pedido pedido){
+		System.out.println("Status do pedido: ");
+	}
+}
