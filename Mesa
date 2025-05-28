@@ -39,5 +39,6 @@ public class Mesa {
 			if(!m.isOcupada()) {
 				System.out.println("Mesa " + m.getNumero());
 			}
+		}
 	}
 }
