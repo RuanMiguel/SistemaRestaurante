@@ -1,5 +1,5 @@
 
-public class Garcom {
+public class Garcom extends Funcionario {
 	private int totalGarcons;
 	
 	public Garcom(int totalGarcons) {
