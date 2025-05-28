@@ -1,0 +1,55 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Comanda {
+    private int id;
+    private Mesa mesa;
+    private Garcom garcom;
+    private String cpfNotaFiscal;
+    private double valorTotal;
+    private List<ItemPedido> pedidos;
+
+    public Comanda() {
+        this.pedidos = new ArrayList<>();
+    }
+
+    public void adicionarPedido(String nome, int quantidade, double preco) {
+        for (ItemPedido item : pedidos) {
+            if (item.getNome().equalsIgnoreCase(nome)) {
+                item.adicionarQuantidade(quantidade);
+                return;
+            }
+        }
+        pedidos.add(new ItemPedido(nome, quantidade, preco));
+    }
+
+    public void listarPedido() {
+        if (pedidos.isEmpty()) {
+            System.out.println("Nenhum pedido adicionado");
+            return;
+        }
+
+        for (ItemPedido item : pedidos) {
+            System.out.println("Item: " + item.getNome() +
+                    ", Quantidade: " + item.getQuantidade() +
+                    ", Preço: " + item.getPreco() +
+                    ", Subtotal: " + item.getSubtotal());
+        }
+    }
+
+    public double calcularTotal() {
+        double total = 0;
+        for (ItemPedido item : pedidos) {
+            total += item.getSubtotal();
+        }
+        this.valorTotal = total;
+        return total;
+    }
+
+    @Override
+    public String toString() {
+        return "Comanda{" +
+                "pedidos=" + pedidos +
+                '}';
+    }
+}
