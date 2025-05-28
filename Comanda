@@ -7,20 +7,14 @@ public class Comanda {
     private Garcom garcom;
     private String cpfNotaFiscal;
     private double valorTotal;
-    private List<ItemPedido> pedidos;
+    private List<Pedido> pedidos;
 
     public Comanda() {
         this.pedidos = new ArrayList<>();
     }
 
-    public void adicionarPedido(String nome, int quantidade, double preco) {
-        for (ItemPedido item : pedidos) {
-            if (item.getNome().equalsIgnoreCase(nome)) {
-                item.adicionarQuantidade(quantidade);
-                return;
-            }
-        }
-        pedidos.add(new ItemPedido(nome, quantidade, preco));
+    public void adicionarPedido(Pedido pedido) {
+        pedidos.add(pedido);
     }
 
     public void listarPedido() {
@@ -29,27 +23,25 @@ public class Comanda {
             return;
         }
 
-        for (ItemPedido item : pedidos) {
-            System.out.println("Item: " + item.getNome() +
-                    ", Quantidade: " + item.getQuantidade() +
-                    ", Preço: " + item.getPreco() +
-                    ", Subtotal: " + item.getSubtotal());
+        for (Pedido pedido : pedidos) {
+            System.out.println(pedido.toString() + "\n");
         }
     }
 
-    public double calcularTotal() {
+    public double caucularTotal(){
         double total = 0;
-        for (ItemPedido item : pedidos) {
-            total += item.getSubtotal();
+        for(Pedido pedido : pedidos){
+            total += pedido.caucularTotal();
         }
-        this.valorTotal = total;
         return total;
     }
+
+    /*MESMA COISA DE listarPedido():
 
     @Override
     public String toString() {
         return "Comanda{" +
                 "pedidos=" + pedidos +
                 '}';
-    }
+    }*/
 }
