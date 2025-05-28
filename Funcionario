@@ -1,9 +1,9 @@
-
-public class Funcionario {
+abstract class Funcionario {
 	private int id;
 	private String nome;
 	private String cpf;
 	private String senha;
+
 	
 	public Funcionario(int id, String nome, String cpf, String senha){
 		this.id = id;
@@ -11,8 +11,50 @@ public class Funcionario {
 		this.cpf = cpf;
 		this.senha = senha;
 	}
-	
+
+	@Override
+	public Funcionario toString() {
+		return "Funcionario{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				'}';
+	}
+
 	public static atualizarStatus(Pedido pedido){
-		
+		public static atualizarStatus(Pedido pedido){
+			System.out.println("Status do pedido: ");
+		}
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }
