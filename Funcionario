@@ -13,17 +13,15 @@ abstract class Funcionario {
 	}
 
 	@Override
-	public Funcionario toString() {
+	public String toString() {
 		return "Funcionario{" +
 				"id=" + id +
 				", nome='" + nome + '\'' +
 				'}';
 	}
 
-	public static atualizarStatus(Pedido pedido){
-		public static atualizarStatus(Pedido pedido){
-			System.out.println("Status do pedido: ");
-		}
+	public static void atualizarStatus(Pedido pedido){
+		pedido.alterarStatus();
 	}
 
 	public int getId() {
