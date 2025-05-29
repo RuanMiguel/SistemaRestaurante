@@ -1,16 +1,21 @@
+package br.edu.uepb.sistemarestaurante.models;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comanda {
-    private int id;
+    private static int qtd_instancias;
+    private final int ID;
     private Mesa mesa;
     private Garcom garcom;
-    private String cpfNotaFiscal;
-    private double valorTotal;
+    private String cpfNotaFiscal;     //NÃO ESTÁ SENDO USADO
+    private double valorTotal;    //NÃO ESTÁ SENDO USADO (apenas a função caucularTotal() é utilizada)
     private List<Pedido> pedidos;
 
     public Comanda() {
         this.pedidos = new ArrayList<>();
+        qtd_instancias++;
+        this.ID = qtd_instancias;
     }
 
     public void adicionarPedido(Pedido pedido) {
@@ -31,10 +36,30 @@ public class Comanda {
     public double caucularTotal(){
         double total = 0;
         for(Pedido pedido : pedidos){
-            total += pedido.caucularTotal();
+            total += pedido.calcularTotal();
         }
         return total;
     }
+
+    //GETTERS
+
+    public int getID() {
+        return ID;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
+    }
+
+    public Garcom getGarcom() {
+        return garcom;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+
 
     /*MESMA COISA DE listarPedido():
 
