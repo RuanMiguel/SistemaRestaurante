@@ -19,7 +19,9 @@ public class Comanda {
     }
 
     public void adicionarPedido(Pedido pedido) {
-        pedidos.add(pedido);
+        if (!pedidos.contains(pedido)) {
+            pedidos.add(pedido);
+        }
     }
 
     public void listarPedido() {
