@@ -1,0 +1,21 @@
+Bruschetta de Tomate;14.50;ENTRADA
+Ceviche de Tilápia;18.50;ENTRADA
+Salada Verde;12.90;ENTRADA
+Sopa de Abóbora;13.00;ENTRADA
+Tábua de Frios;20.00;ENTRADA
+Bife à Parmegiana;32.50;PRINCIPAL
+Filé de Frango Grelhado;28.90;PRINCIPAL
+Lasanha de Berinjela;29.00;PRINCIPAL
+Nhoque ao Molho Sugo;27.90;PRINCIPAL
+Risoto de Camarão;38.90;PRINCIPAL
+Strogonoff de Frango;31.50;PRINCIPAL
+Arroz Branco;6.50;ACOMPANHAMENTO
+Batata Frita;9.90;ACOMPANHAMENTO
+Cuscuz Nordestino;9.00;ACOMPANHAMENTO
+Farofa de Banana;8.90;ACOMPANHAMENTO
+Purê de Batata;7.50;ACOMPANHAMENTO
+PF do Dia (carne moída, purê, arroz);23.00;PRATO_FEITO
+PF Light (frango grelhado, salada, arroz integral);23.90;PRATO_FEITO
+PF Nordestino (carne de sol, macaxeira, feijão verde);25.90;PRATO_FEITO
+Prato Executivo (Frango, arroz, feijão, salada);24.90;PRATO_FEITO
+Prato Feito Vegetariano (soja, legumes, arroz);22.50;PRATO_FEITO

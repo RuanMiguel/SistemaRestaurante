@@ -74,5 +74,11 @@ public class Pedido {
         this.status = StatusPedido.novoStatus(this.status);
     }
 
-    //public double caucularTotal(){}
+    public double calcularTotal(){
+        double total = 0;
+        for(ItemPedido item : itens){
+            total += item.CalcularSubtotal();
+        }
+        return total;
+    }
 }

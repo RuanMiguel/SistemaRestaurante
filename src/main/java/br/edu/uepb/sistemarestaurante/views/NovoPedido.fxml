@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.NovoPedidoController">
+   <top>
+      <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Button>
+            <HBox alignment="CENTER" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Mesa " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numMesa" text="x" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="151.0" prefWidth="600.0" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="264.0" prefWidth="468.0" spacing="40.0" style="-fx-border-color: #000000;">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Tipo do cardápio" textFill="#108635">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="8.0" top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="tipoCardapio" prefHeight="26.0" prefWidth="2000.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Item do cardápio" textFill="#108635">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="itemCardapio" prefHeight="26.0" prefWidth="2000.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Quantidade" textFill="#108635">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="8.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ComboBox fx:id="qtdItem" prefHeight="26.0" prefWidth="2000.0" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="addItem" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #7f9968;" text="Adicionar item ao pedido" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="40.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="30.0" right="30.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="150.0" right="150.0" />
+               </VBox.margin>
+            </VBox>
+            <Button fx:id="addPedido" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #7f9968;" text="Adicionar pedido à comanda" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
