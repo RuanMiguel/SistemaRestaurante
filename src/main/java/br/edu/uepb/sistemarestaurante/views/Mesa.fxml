@@ -46,7 +46,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <VBox fx:id="vboxPedidos" prefWidth="270.0" />
+                        <VBox fx:id="vboxPedidos" prefWidth="270.0" spacing="5.0" />
                         <HBox alignment="BASELINE_CENTER" prefHeight="13.0" prefWidth="270.0">
                            <opaqueInsets>
                               <Insets />
@@ -66,11 +66,6 @@
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label text="R$ ">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
                                     <Label fx:id="totalComanda" text="x">
                                        <font>
                                           <Font size="15.0" />
