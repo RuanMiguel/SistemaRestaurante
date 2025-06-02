@@ -2,6 +2,7 @@ package br.edu.uepb.sistemarestaurante.controllers;
 
 import br.edu.uepb.sistemarestaurante.models.TipoFuncionario;
 import br.edu.uepb.sistemarestaurante.services.LoginService;
+import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,9 +32,10 @@ public class LoginController {
 
     private final LoginService ls = new LoginService();
     private Stage Stage;
+    private String janelaCozinha = "/br/edu/uepb/sistemarestaurante/views/CozinhaView.fxml";
 
     @FXML
-    void fazerLogin(ActionEvent event) {
+    void fazerLogin(ActionEvent event) throws IOException {
         String usuario = campoUsuario.getText();
         String senha = campoSenha.getText();
         TipoFuncionario tipo = ls.autenticarFuncionario(usuario, senha);
@@ -47,14 +49,13 @@ public class LoginController {
             exibirMensagemErro("Usuário ou senha incorretos.");
 
         } else {
-            mensagemErro.setVisible(false);
 
             if (tipo == TipoFuncionario.GARCOM) {
-                //REDIRECIONAR TELA GARCOM
+
                 System.out.println("Tela Garcom");
             } else if (tipo == TipoFuncionario.COZINHA){
-                //REDIRECIONAR TELA COZINHA
-                System.out.println("Tela Garcom");
+                janelaUtils.mudarTela(event, janelaCozinha, "Pedidos à cozinha");
+                System.out.println("Tela Cozinha");
             }
         }
     }
@@ -63,47 +64,5 @@ public class LoginController {
         mensagemErro.setText(mensagem);
         mensagemErro.setVisible(true);
     }
-
-    private void redirecionarTelaInicialGarcom(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/CozinhaView.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Tela do Gaçom"); //tela mesas
-            stage.setScene(new Scene(root));
-            stage.show();
-
-            fecharTelaAtual();
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    private void redirecionarTelaInicialCozinha(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/CozinhaView.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Tela da Cozinha");
-            stage.setScene(new Scene(root));
-            stage.show();
-            
-            fecharTelaAtual();
-            
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-    
-    private void fecharTelaAtual(){
-        //fecharTela:
-        Stage stage = (Stage);
-        campoUsuario.getScene().getWindow();
-        stage.close();
-    }
-    
-
-
 
 }

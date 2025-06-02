@@ -15,30 +15,26 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.LoginController">
    <left>
       <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="32.0" layoutY="176.0" text="Restaurante" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-            <Line endX="100.0" layoutX="114.0" layoutY="211.0" startX="-100.0" stroke="WHITE" />
-            <Label layoutX="79.0" layoutY="217.0" text="sistema" textFill="WHITE">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Label>
-            <ImageView fitHeight="244.0" fitWidth="242.0" layoutX="-6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../resources/br/edu/uepb/sistemarestaurante/images/logo-restaurante.png" />
-               </image>
-            </ImageView>
-         </children>
+         <Label layoutX="32.0" layoutY="176.0" text="Restaurante" textFill="WHITE">
+            <font>
+               <Font name="Verdana Bold" size="24.0" />
+            </font>
+            <effect>
+               <DropShadow />
+            </effect>
+         </Label>
+         <Line endX="100.0" layoutX="114.0" layoutY="211.0" startX="-100.0" stroke="WHITE" />
+         <Label layoutX="79.0" layoutY="217.0" text="sistema" textFill="WHITE">
+            <font>
+               <Font name="Verdana" size="18.0" />
+            </font>
+            <effect>
+               <DropShadow />
+            </effect>
+         </Label>
+         <ImageView fitHeight="244.0" fitWidth="242.0" layoutX="-6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../../../../resources/br/edu/uepb/sistemarestaurante/images/logo-restaurante.png" />
+         </ImageView>
       </AnchorPane>
    </left>
    <right>
@@ -60,8 +56,16 @@
                </font>
             </Label>
             <TextField fx:id="campoUsuario" layoutX="52.0" layoutY="146.0" prefHeight="25.0" prefWidth="180.0" promptText="nome do usuario" />
-            <Button fx:id="botaoLogin" layoutX="80.0" layoutY="280.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="15.0" prefWidth="124.0" style="-fx-background-color: #7f9968; -fx-border-color: #7f9968; -fx-border-radius: 8px;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
+            <Button fx:id="botaoLogin" layoutX="80.0" layoutY="280.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="15.0" prefWidth="124.0" style="-fx-background-color: #7f9968; -fx-border-color: #7f9968; -fx-border-radius: 8px;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font></Button>
             <PasswordField fx:id="campoSenha" layoutX="52.0" layoutY="215.0" prefHeight="25.0" prefWidth="180.0" promptText="senha de acesso" />
+            <Label fx:id="mensagemErro" alignment="CENTER" layoutX="103.0" layoutY="331.0" text="texto de erro" textFill="#c31414" visible="false" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font name="Verdana Italic" size="11.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </right>
