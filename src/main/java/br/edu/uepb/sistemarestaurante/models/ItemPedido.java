@@ -1,7 +1,5 @@
 package br.edu.uepb.sistemarestaurante.models;
 
-//import br.edu.uepb.sistemarestaurante.models.ItemCardapio;
-
 public class ItemPedido {
     private ItemCardapio item;
     private int qtd;
