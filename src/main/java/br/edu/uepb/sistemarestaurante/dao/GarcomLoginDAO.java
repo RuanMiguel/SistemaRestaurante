@@ -18,7 +18,7 @@ public class GarcomLoginDAO {
             try (BufferedReader reader = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
                 String linha;
                 while ((linha = reader.readLine()) != null) {
-                    String[] dados = linha.split(",");
+                    String[] dados = linha.split(";");
                     if (dados.length == 2){
                         String usernameGarcom = dados[0].trim();
                         String senhaGarcom = dados[1].trim();
