@@ -8,8 +8,6 @@ public class Comanda {
     private final int ID;
     private Mesa mesa;
     private Garcom garcom;
-    private String cpfNotaFiscal;     //NÃO ESTÁ SENDO USADO
-    private double valorTotal;    //NÃO ESTÁ SENDO USADO (apenas a função caucularTotal() é utilizada)
     private List<Pedido> pedidos;
 
     public Comanda() {
