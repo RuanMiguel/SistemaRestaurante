@@ -1,11 +1,14 @@
+package br.edu.uepb.sistemarestaurante.models;
+
 import java.util.List;
 
 public class Mesa {
 	private int numero;
 	private int capacidade;
 	private boolean ocupada;
+	private Comanda comanda;
 	
-	public Mesa(int numero, int capacidade, boolean isOcupada){
+	public Mesa(int numero, int capacidade){
 		this.numero = numero;
 		this.capacidade = capacidade;
 		this.ocupada = false;
@@ -16,9 +19,17 @@ public class Mesa {
 	}
 	
 	public boolean isOcupada() {
-		return true;
+		return ocupada;
 	}
-	
+
+	public Comanda getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
+	}
+
 	public void ocupar() {
 		if(!ocupada) {
 			ocupada = true;
@@ -39,6 +50,6 @@ public class Mesa {
 			if(!m.isOcupada()) {
 				System.out.println("Mesa " + m.getNumero());
 			}
-		}
-	}
+	    }
+    }
 }
