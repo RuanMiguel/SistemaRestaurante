@@ -32,9 +32,7 @@
                <DropShadow />
             </effect>
          </Label>
-         <ImageView fitHeight="244.0" fitWidth="242.0" layoutX="-6.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../../../../resources/br/edu/uepb/sistemarestaurante/images/logo-restaurante.png" />
-         </ImageView>
+         <ImageView fx:id="imageViewLogo" fitWidth="242" fitHeight="244" preserveRatio="true" />
       </AnchorPane>
    </left>
    <right>

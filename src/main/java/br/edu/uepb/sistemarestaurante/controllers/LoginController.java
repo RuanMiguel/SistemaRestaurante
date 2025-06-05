@@ -5,16 +5,16 @@ import br.edu.uepb.sistemarestaurante.services.LoginService;
 import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
 
@@ -29,6 +29,15 @@ public class LoginController {
 
     @FXML
     private Label mensagemErro;
+
+    @FXML
+    private ImageView imageViewLogo;
+
+    @FXML
+    public void initialize() {
+        Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/br/edu/uepb/sistemarestaurante/images/logo-restaurante.png")));
+        imageViewLogo.setImage(logo);
+    }
 
     private final LoginService ls = new LoginService();
     private Stage Stage;
