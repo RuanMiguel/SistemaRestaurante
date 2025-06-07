@@ -35,6 +35,9 @@ public class Pedido {
         return HORARIO;
     }
 
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
 
     //MÉTODOS
     @Override
