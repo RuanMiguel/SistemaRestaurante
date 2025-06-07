@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.CozinhaController">
+   <top>
+      <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+            </Button>
+            <HBox alignment="CENTER" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Cozinha " textFill="WHITE">
+                     <font>
+                        <Font name="Verdana Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70;" BorderPane.alignment="CENTER">
+         <content>
+            <VBox alignment="CENTER" maxWidth="600" spacing="10" style="-fx-padding: 15; -fx-background-color: #f9f9f9; -fx-border-color: #cccccc; -fx-border-radius: 8; -fx-background-radius: 8;">
+
+
+               <VBox alignment="CENTER">
+                  <Label fx:id="numIDPedido" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Pedido #123">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font></Label>
+                  <Label text="Horário: 12:30" textFill="#8d8888">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label text="Status: ">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </Label>
+               </VBox>
+
+
+               <VBox alignment="CENTER_LEFT" spacing="5">
+                  <Label text="(1x) Batata Frita">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font></Label>
+                  <Label text="        obs: sem sal">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <Label text="(3x) Coca-Cola">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font></Label>
+               </VBox>
+
+
+               <Button fx:id="botaoStatus" style="-fx-background-color: #7f9968; -fx-text-fill: white;" text="marcar como xxxx">
+                  <font>
+                     <Font name="Verdana" size="12.0" />
+                  </font></Button>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

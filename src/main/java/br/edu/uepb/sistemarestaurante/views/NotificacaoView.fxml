@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.CozinhaController">
+    <top>
+        <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+                    <font>
+                        <Font name="Verdana Bold" size="14.0" />
+                    </font>
+                </Button>
+                <HBox alignment="CENTER" GridPane.columnIndex="1">
+                    <children>
+                        <Label text="Notificações" textFill="WHITE">
+                            <font>
+                                <Font name="Verdana Bold" size="25.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70;" BorderPane.alignment="CENTER">
+         <content>
+            <HBox prefHeight="80.0" prefWidth="460.0" spacing="20.0" style="-fx-border-color: #cccc;">
+               <children>
+                  <Label text="Pedido #123" />
+                  <Label text="Label" />
+               </children>
+            </HBox>
+         </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
