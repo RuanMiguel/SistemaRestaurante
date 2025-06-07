@@ -18,6 +18,10 @@ public class Bebida extends ItemCardapio{
     public VolumeBebida getVolume(){
         return volume;
     }
+
+    public String getStringVolume(){
+        return volume.getVolume();
+    }
 }
 
 
