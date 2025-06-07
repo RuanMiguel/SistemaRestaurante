@@ -3,7 +3,6 @@ package br.edu.uepb.sistemarestaurante.dao;
 import br.edu.uepb.sistemarestaurante.models.Garcom;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;

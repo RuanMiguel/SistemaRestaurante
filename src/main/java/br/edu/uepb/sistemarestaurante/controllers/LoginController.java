@@ -41,7 +41,6 @@ public class LoginController {
 
     private final LoginService ls = new LoginService();
     private Stage Stage;
-    private String janelaCozinha = "/br/edu/uepb/sistemarestaurante/views/CozinhaView.fxml";
 
     @FXML
     void fazerLogin(ActionEvent event) throws IOException {
@@ -60,9 +59,10 @@ public class LoginController {
         } else {
 
             if (tipo == TipoFuncionario.GARCOM) {
-
                 System.out.println("Tela Garcom");
+                System.out.println("O garçom logado é: " + ls.getGarcomLogado());
             } else if (tipo == TipoFuncionario.COZINHA){
+                String janelaCozinha = "/br/edu/uepb/sistemarestaurante/views/CozinhaView.fxml";
                 janelaUtils.mudarTela(event, janelaCozinha, "Pedidos à cozinha");
                 System.out.println("Tela Cozinha");
             }
