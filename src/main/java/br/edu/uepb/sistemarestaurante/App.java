@@ -17,6 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //Temporario
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/Mesa.fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root);
