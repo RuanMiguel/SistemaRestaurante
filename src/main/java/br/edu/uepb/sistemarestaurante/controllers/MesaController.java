@@ -1,6 +1,7 @@
 package br.edu.uepb.sistemarestaurante.controllers;
 
 import br.edu.uepb.sistemarestaurante.models.*;
+import br.edu.uepb.sistemarestaurante.utils.alertaUtils;
 import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -127,6 +128,9 @@ public class MesaController {
             mesa.liberar();
             mesa.setComanda(null);
             carregarDadosMesa();
+            alertaUtils.mostrarInformacao("Sucesso", "Comanda Fechada e Mesa Liberada!");
+        } else {
+            alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda associada!");
         }
         //TALVEZ MUDAR PARA A TELA INICIAL
     }
