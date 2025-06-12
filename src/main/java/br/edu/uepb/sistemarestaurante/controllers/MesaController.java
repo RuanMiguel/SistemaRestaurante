@@ -40,30 +40,36 @@ public class MesaController {
     @FXML
     private VBox vboxPedidos;
 
+    private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/PainelMesasFXML.fxml";
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
     //private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/.fxml";
-    private Mesa mesa;
+    private int numeroMesa;
     private Garcom garcom;
 
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
+    public void setMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
         carregarDadosMesa();
     }
 
-    public void setMesaEGarcom(Mesa mesa, Garcom garcom) {
-        this.mesa = mesa;
+    public void setMesaEGarcom(int numeroMesa, Garcom garcom) {
+        this.numeroMesa = numeroMesa;
         this.garcom = garcom;
         carregarDadosMesa();
     }
 
     //  Metodo para configurar os dados da mesa
     public void carregarDadosMesa() {
-        numMesa.setText(String.format("%02d", mesa.getNumero()));
+        if (Mesa.getMesas().get(numeroMesa) == null) {
+            System.err.println("Mesa com ID " + numeroMesa + " não encontrada no mapa.");
+            return;
+        }
+
+        numMesa.setText(String.format("%02d", Mesa.getMesas().get(numeroMesa).getNumero()));
 
         vboxPedidos.getChildren().clear();
 
-        if (mesa.isOcupada()) {
-            Comanda comanda = mesa.getComanda();
+        if (Mesa.getMesas().get(numeroMesa).isOcupada()) {
+            Comanda comanda = Mesa.getMesas().get(numeroMesa).getComanda();
             List<Pedido> pedidos = comanda.getPedidos();
 
             numComanda.setText(String.valueOf(comanda.getID()));
@@ -103,19 +109,18 @@ public class MesaController {
 
     @FXML
     private void voltarTela(ActionEvent event) throws IOException {
-        //TO DO
-        //janelaUtils.mudarTela(event, CAMINHO, "Tela inicial");
+        janelaUtils.mudarTela(event, janelaMesa, "Tela inicial");
     }
 
     @FXML
     private void chamarAddPedido(ActionEvent event) throws IOException {
-        if(!this.mesa.isOcupada()){
-            mesa.ocupar();
-            mesa.setComanda(new Comanda(this.mesa, this.garcom));
+        if(!Mesa.getMesas().get(numeroMesa).isOcupada()){
+            Mesa.getMesas().get(numeroMesa).ocupar();
+            Mesa.getMesas().get(numeroMesa).setComanda(new Comanda(Mesa.getMesas().get(numeroMesa), this.garcom));
         }
 
         janelaUtils.mudarTela(event, janelaNovoPedido, "Novo Pedido", (NovoPedidoController controller) -> {
-            controller.setMesa(this.mesa);
+            controller.setMesa(numeroMesa);
         });
     }
 
@@ -123,9 +128,9 @@ public class MesaController {
     private void chamarVerPedidos(ActionEvent event) throws IOException {
         //TO DO
         /*
-        if(this.mesa.isOcupada()){
+        if(Mesa.getMesas().get(numeroMesa).isOcupada()){
             janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (NOME-DO-CONTROLLER controller) -> {
-                controller.setMesa(this.mesa);
+                controller.setMesa(Mesa.getMesas().get(numeroMesa)); //passa o objeto mesa, não o numero dela
             });
         } else {
             alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda ou associada!");
@@ -135,9 +140,9 @@ public class MesaController {
 
     @FXML
     private void fecharComanda(ActionEvent event) throws IOException {
-        if(this.mesa.isOcupada()){
-            mesa.liberar();
-            mesa.setComanda(null);
+        if(Mesa.getMesas().get(numeroMesa).isOcupada()){
+            Mesa.getMesas().get(numeroMesa).liberar();
+            Mesa.getMesas().get(numeroMesa).setComanda(null);
             carregarDadosMesa();
             alertaUtils.mostrarInformacao("Sucesso", "Comanda Fechada e Mesa Liberada!");
         } else {
@@ -148,8 +153,6 @@ public class MesaController {
 
     @FXML
     public void initialize() {
-        if (mesa != null) {
-            carregarDadosMesa();
-        }
+
     }
 }

@@ -51,7 +51,7 @@ public class NovoPedidoController {
     private VBox subCardapioContainer;
 
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
-    private Mesa mesa;
+    private int numeroMesa;
     private Pedido novoPedido = new Pedido();
     private String cardapioSelecionado;
     private String subCardapioSelecionado;
@@ -64,9 +64,9 @@ public class NovoPedidoController {
 
     private SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50);
 
-    public void setMesa(Mesa mesa) {
-        this.mesa = mesa;
-        numMesa.setText(String.format("%02d", mesa.getNumero()));
+    public void setMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
+        numMesa.setText(String.format("%02d", Mesa.getMesas().get(numeroMesa).getNumero()));
     }
 
     public void carregarSeletores(){
@@ -113,7 +113,7 @@ public class NovoPedidoController {
 
                         ItensCardapioDAO dao = new ItensCardapioDAO();
                         List<String> sobremesas = new ArrayList<>();
-                        for(ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado, null)){
+                        for(ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado, cardapioSelecionado.equals("Sobremesas") ? null : subCardapioSelecionado)){
                             sobremesas.add(i.getNome());
                         }
                         item.setItems(FXCollections.observableArrayList(sobremesas));
@@ -155,7 +155,7 @@ public class NovoPedidoController {
     @FXML
     private void voltarTela(ActionEvent event) throws IOException {
         janelaUtils.mudarTela(event, janelaMesa, "Mesa", (MesaController controller) -> {
-            controller.setMesa(this.mesa);
+            controller.setMesa(numeroMesa);
         });
     }
 
@@ -182,6 +182,11 @@ public class NovoPedidoController {
             return;
         }
 
+        if (qtdSelecionada == null || qtdSelecionada <= 0) {
+            alertaUtils.mostrarAlerta("Erro", "Quantidade inválida.");
+            return;
+        }
+
         // Obter o itemSelecionado completo a partir do nome (buscando no DAO)
         ItensCardapioDAO dao = new ItensCardapioDAO();
         itemSelecionado = null;
@@ -202,33 +207,38 @@ public class NovoPedidoController {
             return;
         }
 
-        // Adiciona ao pedido
-        novoPedido.adicionarItem(itemSelecionado, qtdSelecionada, obsEscrita);
+        try {
+            // Adiciona ao pedido
+            novoPedido.adicionarItem(itemSelecionado, qtdSelecionada, obsEscrita);
 
-        // Limpar campos e resetar seleções
-        cardapio.getSelectionModel().clearSelection();
-        subCardapio.getSelectionModel().clearSelection();
-        item.getSelectionModel().clearSelection();
-        observacao.clear();
-        quantidade.getValueFactory().setValue(1);
+            // Limpar campos e resetar seleções
+            cardapio.getSelectionModel().clearSelection();
+            subCardapio.getSelectionModel().clearSelection();
+            item.getSelectionModel().clearSelection();
+            observacao.clear();
+            quantidade.getValueFactory().setValue(1);
 
-        // Reset variáveis
-        cardapioSelecionado = null;
-        subCardapioSelecionado = null;
-        itemSelecionado = null;
-        qtdSelecionada = null;
-        obsEscrita = null;
+            // Reset variáveis
+            cardapioSelecionado = null;
+            subCardapioSelecionado = null;
+            itemSelecionado = null;
+            qtdSelecionada = null;
+            obsEscrita = null;
 
-        // Atualiza os seletores (lista de categorias)
-        carregarSeletores();
+            // Atualiza os seletores (lista de categorias)
+            carregarSeletores();
+        } catch (Exception e) {
+            alertaUtils.mostrarAlerta("Erro", "Erro ao adicionar item ao pedido: " + e.getMessage());
+            e.printStackTrace(); // Para log ou debug
+        }
     }
 
     @FXML
     private void adicionarPedidoAComanda(ActionEvent event) throws IOException {
         if(!novoPedido.getItens().isEmpty()) {
-            mesa.getComanda().adicionarPedido(novoPedido);
+            Mesa.getMesas().get(numeroMesa).getComanda().adicionarPedido(novoPedido);
             janelaUtils.mudarTela(event, janelaMesa, "Mesa", (MesaController controller) -> {
-                controller.setMesa(this.mesa);
+                controller.setMesa(numeroMesa);
             });
         } else {
             alertaUtils.mostrarAlerta("Erro", "Adicione pelo menos um item ao pedido!");
