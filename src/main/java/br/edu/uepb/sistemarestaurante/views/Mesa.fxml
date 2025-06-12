@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -90,20 +91,29 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="55.0" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="botaoAddPedido" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968;" text="+ novo pedido" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="botaoAddPedido" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chamarAddPedido" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="+ novo pedido" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Button fx:id="botaoVerPedidos" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968;" text="ver pedidos" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="botaoVerPedidos" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chamarVerPedidos" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="ver pedidos" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
-                  <Button fx:id="botaoFecharComanda" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968;" text="fechar comanda" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="botaoFecharComanda" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fecharComanda" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="fechar comanda" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </VBox>
@@ -120,10 +130,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+            <Button fx:id="botaoVoltar" mnemonicParsing="false" onAction="#voltarTela" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
                <font>
                   <Font name="Verdana Bold" size="14.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <HBox alignment="CENTER" GridPane.columnIndex="1">
                <children>
