@@ -1,6 +1,7 @@
 package br.edu.uepb.sistemarestaurante;
 
 import br.edu.uepb.sistemarestaurante.controllers.MesaController;
+import br.edu.uepb.sistemarestaurante.models.Garcom;
 import br.edu.uepb.sistemarestaurante.models.Mesa;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +22,7 @@ public class App extends Application {
         Scene tela = new Scene(root);
 
         MesaController controller = fxmlLoader.getController();
-        controller.setMesa(new Mesa(2,4));
+        controller.setMesaEGarcom(new Mesa(2,4), new Garcom(1, "Igor", "123456789-12", "oi"));
 
         primaryStage.setTitle("Mesa de Teste");
         primaryStage.setScene(tela);
