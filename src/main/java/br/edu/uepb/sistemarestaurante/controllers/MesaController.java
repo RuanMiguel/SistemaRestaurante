@@ -43,9 +43,16 @@ public class MesaController {
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
     //private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/.fxml";
     private Mesa mesa;
+    private Garcom garcom;
 
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
+        carregarDadosMesa();
+    }
+
+    public void setMesaEGarcom(Mesa mesa, Garcom garcom) {
+        this.mesa = mesa;
+        this.garcom = garcom;
         carregarDadosMesa();
     }
 
@@ -104,7 +111,7 @@ public class MesaController {
     private void chamarAddPedido(ActionEvent event) throws IOException {
         if(!this.mesa.isOcupada()){
             mesa.ocupar();
-            mesa.setComanda(new Comanda());
+            mesa.setComanda(new Comanda(this.mesa, this.garcom));
         }
 
         janelaUtils.mudarTela(event, janelaNovoPedido, "Novo Pedido", (NovoPedidoController controller) -> {
@@ -116,9 +123,13 @@ public class MesaController {
     private void chamarVerPedidos(ActionEvent event) throws IOException {
         //TO DO
         /*
-        janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (NOME-DO-CONTROLLER controller) -> {
-            controller.setMesa(this.mesa);
-        });
+        if(this.mesa.isOcupada()){
+            janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (NOME-DO-CONTROLLER controller) -> {
+                controller.setMesa(this.mesa);
+            });
+        } else {
+            alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda ou associada!");
+        }
         */
     }
 
