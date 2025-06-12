@@ -1,8 +1,11 @@
 package br.edu.uepb.sistemarestaurante.models;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Mesa {
+	private static final Map<Integer, Mesa> mesas = criarMesas();
 	private int numero;
 	private int capacidade;
 	private boolean ocupada;
@@ -13,7 +16,19 @@ public class Mesa {
 		this.capacidade = capacidade;
 		this.ocupada = false;
 	}
-	
+
+	private static Map<Integer, Mesa> criarMesas() { //*
+		Map<Integer, Mesa> mapa = new HashMap<>();
+		for (int i = 1; i <= 8; i++) {
+			mapa.put(i, new Mesa(i, 6));
+		}
+		return mapa;
+	}
+
+	public static Map<Integer, Mesa> getMesas() {
+		return mesas;
+	}
+
 	public int getNumero() {
 		return numero;
 	}
