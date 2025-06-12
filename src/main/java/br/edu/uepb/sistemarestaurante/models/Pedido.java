@@ -35,6 +35,9 @@ public class Pedido {
         return HORARIO;
     }
 
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
 
     //MÉTODOS
     @Override
@@ -48,10 +51,12 @@ public class Pedido {
     public void adicionarItem(ItemCardapio item, int qtd, String obs){
         ItemPedido novoItem = new ItemPedido(item, qtd, obs);
         itens.add(novoItem);
+        System.out.println("Item adicionado ao pedido");
     }
     //ou:
     public void adicionarItem(ItemPedido novoItem){
         itens.add(novoItem);
+        System.out.println("Item adicionado ao pedido");
     }
 
     public void removerItem(ItemPedido item) throws IllegalArgumentException {

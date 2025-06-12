@@ -1,12 +1,16 @@
 package br.edu.uepb.sistemarestaurante.controllers;
 
 import br.edu.uepb.sistemarestaurante.models.*;
+import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import javafx.event.ActionEvent;
+import java.io.IOException;
 import java.util.List;
 
 public class MesaController {
@@ -35,16 +39,25 @@ public class MesaController {
     @FXML
     private VBox vboxPedidos;
 
+    private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
+    //private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/.fxml";
+    private Mesa mesa;
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+        carregarDadosMesa();
+    }
+
     //  Metodo para configurar os dados da mesa
-    public void carregarDadosMesa(Mesa mesa) {
+    public void carregarDadosMesa() {
         numMesa.setText(String.format("%02d", mesa.getNumero()));
 
         vboxPedidos.getChildren().clear();
 
-        Comanda comanda = mesa.getComanda();
-        List<Pedido> pedidos = comanda.getPedidos();
+        if (mesa.isOcupada()) {
+            Comanda comanda = mesa.getComanda();
+            List<Pedido> pedidos = comanda.getPedidos();
 
-        if (!pedidos.isEmpty()) {
             numComanda.setText(String.valueOf(comanda.getID()));
             totalComanda.setText(String.format("R$ %.2f", comanda.caucularTotal()));
 
@@ -80,27 +93,48 @@ public class MesaController {
         }
     }
 
+    @FXML
+    private void voltarTela(ActionEvent event) throws IOException {
+        //TO DO
+        //janelaUtils.mudarTela(event, CAMINHO, "Tela inicial");
+    }
+
+    @FXML
+    private void chamarAddPedido(ActionEvent event) throws IOException {
+        if(!this.mesa.isOcupada()){
+            mesa.ocupar();
+            mesa.setComanda(new Comanda());
+        }
+
+        janelaUtils.mudarTela(event, janelaNovoPedido, "Novo Pedido", (NovoPedidoController controller) -> {
+            controller.setMesa(this.mesa);
+        });
+    }
+
+    @FXML
+    private void chamarVerPedidos(ActionEvent event) throws IOException {
+        //TO DO
+        /*
+        janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (NOME-DO-CONTROLLER controller) -> {
+            controller.setMesa(this.mesa);
+        });
+        */
+    }
+
+    @FXML
+    private void fecharComanda(ActionEvent event) throws IOException {
+        if(this.mesa.isOcupada()){
+            mesa.liberar();
+            mesa.setComanda(null);
+            carregarDadosMesa();
+        }
+        //TALVEZ MUDAR PARA A TELA INICIAL
+    }
 
     @FXML
     public void initialize() {
-        // Simulação
-        Mesa m = new Mesa(2,4);
-        Comanda c = new Comanda();
-        m.setComanda(c);
-
-        Pedido p = new Pedido();
-        ItemPedido i = new ItemPedido(new Sobremesa("pave", 12),1,"");
-        p.adicionarItem(i);
-        c.adicionarPedido(p);
-
-        Pedido p2 = new Pedido();
-        ItemPedido i2 = new ItemPedido(new Sobremesa("pudim", 9),2,"");
-        p2.adicionarItem(i2);
-        c.adicionarPedido(p2);
-        c.adicionarPedido(p2);
-
-        // Mostra na tela
-        carregarDadosMesa(m);
+        if (mesa != null) {
+            carregarDadosMesa();
+        }
     }
-
 }
