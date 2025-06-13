@@ -1,0 +1,100 @@
+package com.lp2.sr;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
+import java.util.List;
+
+public class Controlador {
+    @FXML
+    private Label welcomeText;
+
+    @FXML
+    private Label labelHorario;
+
+    @FXML
+    private Label labelStatus;
+
+    @FXML
+    private Label labelValorTotal;
+
+    @FXML
+    private VBox pedidosContainer;
+
+    @FXML
+    private VBox contentVBox;
+
+    @FXML
+    protected void onHelloButtonClick() {
+        welcomeText.setText("Welcome to JavaFX Application!");
+    }
+
+    public void inicializarTela(String horario, String status, double total) {
+        labelHorario.setText(horario);
+        labelStatus.setText(status);
+        labelValorTotal.setText(String.format("R$ %.2f", total));
+    }
+
+    public void adicionarPedido(String horario, String status, List<ItemPedido> itens, double total) {
+        VBox pedidoBox = new VBox(5);
+        pedidoBox.setStyle("-fx-padding: 10; -fx-border-color: black; -fx-border-radius: 5;");
+
+        Label horarioLabel = new Label("Horário: " + horario);
+        Label statusLabel = new Label("Status: " + status);
+        Label totalLabel = new Label("Total: R$ " + String.format("%.2f", total));
+
+        pedidoBox.getChildren().addAll(horarioLabel, statusLabel);
+
+        for (ItemPedido item : itens) {
+            Label itemLabel = new Label(item.getNome() + " x" + item.getQuantidade());
+            pedidoBox.getChildren().add(itemLabel);
+        }
+
+        pedidoBox.getChildren().add(totalLabel);
+
+        pedidosContainer.getChildren().add(pedidoBox);
+    }
+
+    @FXML
+    private VBox vboxlistaPedidos;
+
+    private Comanda comanda;
+
+    public void InicializarComanda() {
+        comanda = new Comanda();
+        comanda.adicionarPedido(new Pedido("123", "12:30", "PENDENTE", 45));
+        comanda.adicionarPedido(new Pedido("124", "12:00", "PREPARANDO", 30));
+        comanda.adicionarPedido(new Pedido("125", "11:30", "FINALIZADO", 50));
+
+        carregarPedidos();
+    }
+    public void carregarPedidos() {
+        for (Pedido pedido : comanda.getPedidos()){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/lp2/sr/TelaPedido.fxml"));
+                VBox itemPedido = loader.load();
+
+                Comanda controller = loader.getController();
+                controller.adicionarPedido(pedido);
+
+                vboxlistaPedidos.getChildren().add(itemPedido);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void carregarTelaListaPedidos() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/lp2/sr/telaListaPedidos.fxml"));
+            Parent listaPedidos = loader.load();
+            contentVBox.getChildren().setAll(listaPedidos);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
