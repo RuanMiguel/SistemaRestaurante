@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="br.edu.uepb.sistemarestaurante.controllers.PedidoItemController"
+      fx:controller="br.edu.uepb.sistemarestaurante.controllers.PedidoCozinhaController"
       alignment="CENTER" maxWidth="600" spacing="10"
       style="-fx-padding: 15; -fx-background-color: #f9f9f9; -fx-border-color: #cccccc; -fx-border-radius: 8; -fx-background-radius: 8;">
 

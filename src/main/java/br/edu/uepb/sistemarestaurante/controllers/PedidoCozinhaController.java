@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public class PedidoItemController {
+public class PedidoCozinhaController {
 
     @FXML
     private VBox pedidoBox; //VBox preenchido com dados do pedido
@@ -34,7 +34,7 @@ public class PedidoItemController {
 
         containerItensPedido.getChildren().clear();
         for (ItemPedido item : pedido.getItens()) {
-            Label lblItem = new Label("(" + item.getQuantidade() + "x) " + item.getNome());
+            Label lblItemPedido = new Label("(" + item.getQuantidade() + "x) " + item.getNome());
             itensContainer.getChildren().add(lblItem);
 
             if (item.getObservacao() != null && !item.getObservacao().isEmpty()) {
