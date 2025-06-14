@@ -1,6 +1,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Button?>
+
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="br.edu.uepb.sistemarestaurante.controllers.PedidoItemController"
       alignment="CENTER" maxWidth="600" spacing="10"
@@ -12,7 +13,7 @@
         <Label fx:id="statusPedido" text="Status: PENDENTE"/>
     </VBox>
 
-    <VBox fx:id="itensContainer" alignment="CENTER_LEFT" spacing="5">
+    <VBox fx:id="containerItensPedido" alignment="CENTER_LEFT" spacing="5">
         <!-- os itens serão adicionados dinamicamente aqui -->
     </VBox>
 

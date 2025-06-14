@@ -14,40 +14,41 @@
     <top>
         <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0"
+                                   prefWidth="92.79996337890626"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <children>
-                <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+            <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;"
+                    text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+                <font>
+                    <Font name="Verdana Bold" size="14.0"/>
+                </font>
+            </Button>
+            <HBox alignment="CENTER" GridPane.columnIndex="1">
+                <Label text="Notificações" textFill="WHITE">
                     <font>
-                        <Font name="Verdana Bold" size="14.0" />
+                        <Font name="Verdana Bold" size="25.0"/>
                     </font>
-                </Button>
-                <HBox alignment="CENTER" GridPane.columnIndex="1">
-                    <children>
-                        <Label text="Notificações" textFill="WHITE">
-                            <font>
-                                <Font name="Verdana Bold" size="25.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-            </children>
+                </Label>
+            </HBox>
         </GridPane>
     </top>
     <center>
-        <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70;" BorderPane.alignment="CENTER">
-         <content>
+        <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70;"
+                    BorderPane.alignment="CENTER">
             <HBox prefHeight="80.0" prefWidth="460.0" spacing="20.0" style="-fx-border-color: #cccc;">
-               <children>
-                  <Label text="Pedido #123" />
-                  <Label text="Label" />
-               </children>
+                <Label text="Pedido #123"/>
+                <Label text="Mesa X"/>
+                <Button mnemonicParsing="false" style="-fx-background-color: #7f9968; -fx-border-radius: 8px;"
+                        text="Entregar" textFill="WHITE">
+                    <font>
+                        <Font name="Verdana Bold" size="12.0"/>
+                    </font>
+                </Button>
             </HBox>
-         </content>
         </ScrollPane>
     </center>
 </BorderPane>

@@ -21,28 +21,23 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
-         <children>
-            <Button fx:id="botaoVoltar" mnemonicParsing="false" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+         <Button fx:id="botaoDeslogar" mnemonicParsing="false" onAction="#deslogarCozinha" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Deslogar" textAlignment="CENTER" textFill="WHITE" underline="true">
+            <font>
+               <Font name="Verdana Bold" size="14.0" />
+            </font>
+         </Button>
+         <HBox alignment="CENTER" GridPane.columnIndex="1">
+            <Label text="Cozinha " textFill="WHITE">
                <font>
-                  <Font name="Verdana Bold" size="14.0" />
+                  <Font name="Verdana Bold" size="25.0" />
                </font>
-            </Button>
-            <HBox alignment="CENTER" GridPane.columnIndex="1">
-               <children>
-                  <Label text="Cozinha " textFill="WHITE">
-                     <font>
-                        <Font name="Verdana Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
+            </Label>
+         </HBox>
       </GridPane>
    </top>
    <center>
-      <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70;"
-                  BorderPane.alignment="CENTER">
-         <VBox fx:id="containerPedido" spacing="15" padding="20" alignment="TOP_CENTER"/>
+      <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70.0;" BorderPane.alignment="CENTER">
+         <VBox fx:id="containerPedido" alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 20.0;" />
       </ScrollPane>
    </center>
 </BorderPane>
