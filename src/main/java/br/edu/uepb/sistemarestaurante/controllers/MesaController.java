@@ -40,7 +40,7 @@ public class MesaController {
     @FXML
     private VBox vboxPedidos;
 
-    private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/PainelMesasFXML.fxml";
+    private String painelMesas = "/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml";
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
     //private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/.fxml";
     private int numeroMesa;
@@ -109,7 +109,7 @@ public class MesaController {
 
     @FXML
     private void voltarTela(ActionEvent event) throws IOException {
-        janelaUtils.mudarTela(event, janelaMesa, "Tela inicial");
+        janelaUtils.mudarTela(event, painelMesas, "Tela inicial");
     }
 
     @FXML
@@ -126,14 +126,13 @@ public class MesaController {
 
     @FXML
     private void chamarVerPedidos(ActionEvent event) throws IOException {
-        //TO DO
         /*
         if(Mesa.getMesas().get(numeroMesa).isOcupada()){
             janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (NOME-DO-CONTROLLER controller) -> {
-                controller.setMesa(Mesa.getMesas().get(numeroMesa)); //passa o objeto mesa, não o numero dela
+                controller.setComanda(Mesa.getMesas().get(numeroMesa).getComanda());
             });
         } else {
-            alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda ou associada!");
+            alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda associada!");
         }
         */
     }
@@ -145,14 +144,12 @@ public class MesaController {
             Mesa.getMesas().get(numeroMesa).setComanda(null);
             carregarDadosMesa();
             alertaUtils.mostrarInformacao("Sucesso", "Comanda Fechada e Mesa Liberada!");
+            // voltarTela(event); // TALVEZ MUDAR PARA A TELA INICIAL
         } else {
             alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda associada!");
         }
-        //TALVEZ MUDAR PARA A TELA INICIAL
     }
 
-    @FXML
-    public void initialize() {
-
-    }
+    /*@FXML
+    public void initialize() {}*/
 }
