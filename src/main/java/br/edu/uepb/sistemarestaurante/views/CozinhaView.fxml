@@ -37,7 +37,7 @@
    </top>
    <center>
       <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70.0;" BorderPane.alignment="CENTER">
-         <VBox fx:id="containerPedido" alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 20.0;" />
+         <VBox fx:id="pedidosBoxPai" alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 20.0;" />
       </ScrollPane>
    </center>
 </BorderPane>

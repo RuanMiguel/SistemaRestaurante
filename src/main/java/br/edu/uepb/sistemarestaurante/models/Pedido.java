@@ -11,6 +11,7 @@ public class Pedido {
     private StatusPedido status;
     private final LocalTime HORARIO;
     private List<ItemPedido> itens = new ArrayList<ItemPedido>();
+    private List<Pedido> todosPedidos = new ArrayList();
 
     //CONSTRUCTOR
     public Pedido() {
@@ -73,6 +74,15 @@ public class Pedido {
     public void alterarStatus(){
         this.status = StatusPedido.novoStatus(this.status);
     }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public boolean isAtivo(){
+        return status == StatusPedido.PENDENTE || status == StatusPedido.PREPARANDO;
+    }
+
 
     //public double caucularTotal(){}
 }
