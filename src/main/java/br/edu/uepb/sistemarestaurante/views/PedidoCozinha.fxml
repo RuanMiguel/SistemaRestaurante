@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxWidth="600" spacing="10" style="-fx-padding: 15; -fx-background-color: #f9f9f9; -fx-border-color: #cccccc; -fx-border-radius: 8; -fx-background-radius: 8;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.PedidoCozinhaController">
+
+    <VBox alignment="CENTER">
+        <Label fx:id="numIDPedido" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Pedido #123" />
+        <Label fx:id="horarioPedido" text="Horário: 12:30" textFill="#8d8888" />
+        <Label fx:id="statusPedido" text="Status: PENDENTE" />
+    </VBox>
+
+    <VBox fx:id="itensPedidoBox" alignment="CENTER_LEFT" spacing="5">
+        <!-- os itens serão adicionados dinamicamente aqui -->
+    </VBox>
+
+    <Button fx:id="botaoStatus" onAction="#marcarComo" style="-fx-background-color: #7f9968; -fx-text-fill: white;" text="Marcar como " />
+</VBox>

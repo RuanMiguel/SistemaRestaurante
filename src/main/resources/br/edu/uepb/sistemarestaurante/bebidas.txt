@@ -1,0 +1,10 @@
+Água Mineral Sem Gás;3.00;0.250L;Àguas
+Água Mineral com Gás;3.50;0.250L;Àguas
+Suco de Laranja Natural;6.00;0.250L;Sucos
+Suco de Uva Integral;8.00;1L;Sucos
+Refrigerante Cola;5.00;0.250L;Refrigerantes
+Refrigerante Guaraná;7.50;1.5L;Refrigerantes
+Cerveja Pilsen;6.90;0.250L;Alcoólicas
+Cerveja Artesanal IPA;12.00;0.250L;Alcoólicas
+Vinho Tinto da Casa;35.00;1L;Alcoólicas
+Suco de Maracujá Natural;6.50;0.250L;Sucos
