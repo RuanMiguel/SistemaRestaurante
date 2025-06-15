@@ -10,8 +10,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Classe responsável por acessar os arquivos de dados dos itens do cardápio.
+ * Realiza a leitura dos arquivos de texto com as informações de pratos, bebidas e sobremesas,
+ * e converte essas informações em objetos do tipo {@link ItemCardapio}.
+ *
+ * Os arquivos devem estar disponíveis no classpath:
+ * - /br/edu/uepb/sistemarestaurante/pratos.txt
+ * - /br/edu/uepb/sistemarestaurante/bebidas.txt
+ * - /br/edu/uepb/sistemarestaurante/sobremesas.txt
+ *
+ * Cada linha dos arquivos deve estar no seguinte formato:
+ * - Pratos: nome;preço;tipo
+ * - Bebidas: nome;preço;volume;tipo
+ * - Sobremesas: nome;preço
+ *
+ * @author Laryssa D. Ramos
+ */
 public class ItensCardapioDAO {
 
+    /**
+     * Retorna uma lista de itens do cardápio com base na seleção do cardápio principal e do subcardápio.
+     *
+     * Lê o conteúdo dos arquivos de texto conforme o tipo de cardápio selecionado:
+     * <ul>
+     *     <li>Se {@code cardapioSelecionado} for "Pratos", o metodo busca no arquivo {@code pratos.txt}.</li>
+     *     <li>Se for "Bebidas", busca em {@code bebidas.txt}.</li>
+     *     <li>Se for "Sobremesas", busca em {@code sobremesas.txt}, e {@code subCardapioSelecionado} será ignorado (pode ser {@code null}).</li>
+     * </ul>
+     *
+     * @param cardapioSelecionado o tipo de cardápio selecionado (Pratos, Bebidas ou Sobremesas)
+     * @param subCardapioSelecionado o subtipo de item, que pode ser o Tipo de prato (Entradas, Principais, Acompanhamentos ou Pratos Feitos), o Tipo de bebida (Àguas, Sucos, Refrigerantes ou Alcoólicas), ou {@code null} se o cardápio for Sobremesas
+     * @return uma lista de itens do cardápio que correspondem à seleção
+     * @throws NullPointerException se o arquivo correspondente não for encontrado no classpath
+     */
     public List<ItemCardapio> listarItensCardapio(String cardapioSelecionado, String subCardapioSelecionado){
         List<ItemCardapio> itens = new ArrayList<>();
 

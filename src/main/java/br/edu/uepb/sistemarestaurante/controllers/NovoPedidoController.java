@@ -18,6 +18,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Controller responsável por gerenciar a criação de novos pedidos para a coamnda de uma mesa no sistema de restaurante.
+ * Permite selecionar itens do cardápio, adicionar observações, quantidades, e confirmar o pedido.
+ * Interage com as entidades {@link Mesa}, {@link Comanda}, {@link Pedido}, {@link ItemPedido}, {@link ItemCardapio}, entre outras.
+ * Utiliza DAOs e utilitários para manipular dados e trocar de telas.
+ *
+ * @author Laryssa D. Ramos
+ */
 public class NovoPedidoController {
 
     @FXML
@@ -64,11 +72,19 @@ public class NovoPedidoController {
 
     private SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50);
 
+    /**
+     * Define a mesa atual para a qual o pedido será feito.
+     *
+     * @param numeroMesa o número da mesa
+     */
     public void setMesa(int numeroMesa) {
         this.numeroMesa = numeroMesa;
         numMesa.setText(String.format("%02d", Mesa.getMesas().get(numeroMesa).getNumero()));
     }
 
+    /**
+     * Inicializa os seletores de cardápio, subcardápio, item e quantidade.
+     */
     public void carregarSeletores(){
         cardapio.setItems(obsCategoriasCardapio);
         carregarCBSubCardapio();
@@ -77,6 +93,10 @@ public class NovoPedidoController {
         quantidade.setValueFactory(valueFactory);
     }
 
+    /**
+     * Carrega os tipos de subcardápio no ComboBox, caso a categoria selecionada no cardápio principal seja "Pratos" ou "Bebidas".
+     * Caso a categoria selecionada no cardápio principal seja "Sobremesas", atualiza a lista de itens para esta categoria e torna o ComboBox de subcardápio invisível.
+     */
     public void carregarCBSubCardapio() {
         cardapioSelecionado = cardapio.getValue();
         cardapio.valueProperty().addListener(new ChangeListener<String>() {
@@ -124,6 +144,9 @@ public class NovoPedidoController {
         });
     }
 
+    /**
+     * Carrega no ComboBox os itens disponíveis, conforme o subcardápio selecionado.
+     */
     public void carregarCBItem(){
         cardapioSelecionado = cardapio.getValue();
         subCardapioSelecionado = subCardapio.getValue();
@@ -152,6 +175,12 @@ public class NovoPedidoController {
     }
 
 
+    /**
+     * Manipula o clique no botão "Voltar", redirecionando para a tela da mesa atual.
+     *
+     * @param event o evento de clique no botão "Voltar"
+     * @throws IOException se a tela não puder ser carregada
+     */
     @FXML
     private void voltarTela(ActionEvent event) throws IOException {
         janelaUtils.mudarTela(event, janelaMesa, "Mesa", (MesaController controller) -> {
@@ -159,6 +188,10 @@ public class NovoPedidoController {
         });
     }
 
+    /**
+     * Adiciona o item selecionado ao pedido atual com base nas seleções do usuário, ao clicar no botão "Adicionar item ao pedido".
+     * Realiza validações e exibe alertas em caso de erro.
+     */
     @FXML
     private void adicionarItemAoPedido() {
         String nomeItem = item.getValue();
@@ -233,6 +266,12 @@ public class NovoPedidoController {
         }
     }
 
+    /**
+     * Adiciona o pedido atual à comanda da mesa e retorna à tela da mesa atual.
+     *
+     * @param event o evento do botão
+     * @throws IOException se houver erro ao mudar de tela
+     */
     @FXML
     private void adicionarPedidoAComanda(ActionEvent event) throws IOException {
         if(!novoPedido.getItens().isEmpty()) {
@@ -245,7 +284,10 @@ public class NovoPedidoController {
         }
     }
 
-
+    /**
+     * Metodo chamado automaticamente pelo JavaFX após o carregamento do FXML.
+     * Inicializa os seletores de cardápio e configura listeners.
+     */
     @FXML
     public void initialize() {
         carregarSeletores();
