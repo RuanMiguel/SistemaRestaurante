@@ -15,4 +15,10 @@ public class Garcom extends Funcionario{
         }
     }
 
+    public static void anotarPedido(Mesa mesa, Pedido pedido){
+        Comanda c = new Comanda();
+        c.adicionarPedido(pedido);
+        System.out.print("Pedido anotado!");
+    }
+
 }
