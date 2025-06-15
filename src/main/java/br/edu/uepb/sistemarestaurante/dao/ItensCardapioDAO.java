@@ -16,14 +16,18 @@ import java.util.Objects;
  * e converte essas informações em objetos do tipo {@link ItemCardapio}.
  *
  * Os arquivos devem estar disponíveis no classpath:
- * - /br/edu/uepb/sistemarestaurante/pratos.txt
- * - /br/edu/uepb/sistemarestaurante/bebidas.txt
- * - /br/edu/uepb/sistemarestaurante/sobremesas.txt
+ * <ul>
+ * <li>/br/edu/uepb/sistemarestaurante/pratos.txt</li>
+ * <li>/br/edu/uepb/sistemarestaurante/bebidas.txt</li>
+ * <li>/br/edu/uepb/sistemarestaurante/sobremesas.txt</li>
+ * </ul>
  *
  * Cada linha dos arquivos deve estar no seguinte formato:
- * - Pratos: nome;preço;tipo
- * - Bebidas: nome;preço;volume;tipo
- * - Sobremesas: nome;preço
+ * <ul>
+ * <li>Pratos: nome;preço;tipo</li>
+ * <li>Bebidas: nome;preço;volume;tipo</li>
+ * <li>Sobremesas: nome;preço</li>
+ * <ul>
  *
  * @author Laryssa D. Ramos
  */
