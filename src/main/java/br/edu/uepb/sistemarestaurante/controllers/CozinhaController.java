@@ -32,7 +32,6 @@ public class CozinhaController {
                     VBox pedidoBox = loader.load();
 
                     PedidoCozinhaController controller = loader.getController();
-
                     controller.setPedido(pedido);
 
                     pedidosBoxPai.getChildren().add(pedidoBox);

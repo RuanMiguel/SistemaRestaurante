@@ -14,14 +14,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Temporario
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/LoginView.fxml"));
         Parent root = fxmlLoader.load();
-        Scene tela = new Scene(root);
+        Scene tela = new Scene(root, 520, 400);
 
-        primaryStage.setTitle("Sistema de Restaurante");
+        primaryStage.setTitle("Gerenciador de Comandas e Pedidos");
         primaryStage.setScene(tela);
-        primaryStage.setMaximized(true);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }

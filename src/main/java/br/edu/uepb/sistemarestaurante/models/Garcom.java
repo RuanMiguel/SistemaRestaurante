@@ -1,21 +1,24 @@
 package br.edu.uepb.sistemarestaurante.models;
 
-public class Garcom {
-    private String username;
-    private String senha;
+public class Garcom extends Funcionario{
 
-    public Garcom (String username, String senha){
-        this.username = username;
-        this.senha = senha;
+    public Garcom (String id, String senha){
+        super(id, senha);
     }
 
-    public String getUsername(){
-        return username;
+    @Override
+    public void atualizarStatus(Pedido pedido) {
+        if (pedido.getStatus() == StatusPedido.PRONTO) {
+            pedido.alterarStatus(); // Só avança se estiver PRONTO
+        } else {
+            throw new IllegalStateException("Garçom só pode alterar pedidos PRONTOS");
+        }
     }
 
-    public String getSenha(){
-        return senha;
+    public static void anotarPedido(Mesa mesa, Pedido pedido){
+        Comanda c = new Comanda();
+        c.adicionarPedido(pedido);
+        System.out.print("Pedido anotado!");
     }
-
 
 }

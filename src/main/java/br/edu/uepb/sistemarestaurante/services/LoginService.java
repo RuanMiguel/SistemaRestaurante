@@ -6,7 +6,7 @@ import br.edu.uepb.sistemarestaurante.models.TipoFuncionario;
 
 public class LoginService {
     private final GarcomLoginDAO garcomLoginDAO = new GarcomLoginDAO();
-    private static String garcomLogado;
+    private String garcomLogado;
 
     public TipoFuncionario autenticarFuncionario(String usuario, String senha){
         if (usuario.equals("cozinha") && senha.equals("1234")){
@@ -14,7 +14,7 @@ public class LoginService {
         }
 
         for (Garcom garcom : garcomLoginDAO.listarGarcons()) {
-            if (garcom.getUsername().equals(usuario) && garcom.getSenha().equals(senha)) {
+            if (garcom.getId().equals(usuario) && garcom.getSenha().equals(senha)) {
                 garcomLogado = usuario;
                 return TipoFuncionario.GARCOM;
             }
@@ -24,10 +24,6 @@ public class LoginService {
 
     public String getGarcomLogado(){
         return garcomLogado;
-    }
-
-    public static void logout() {
-        garcomLogado = null;
     }
 
 

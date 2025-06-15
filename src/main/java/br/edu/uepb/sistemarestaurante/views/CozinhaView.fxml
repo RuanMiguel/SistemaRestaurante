@@ -12,32 +12,32 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.CozinhaController">
-    <top>
-        <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <Button fx:id="botaoDeslogar" mnemonicParsing="false" onAction="#deslogarCozinha" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Deslogar" textAlignment="CENTER" textFill="WHITE" underline="true">
-                <font>
-                    <Font name="Verdana Bold" size="14.0" />
-                </font>
-            </Button>
-            <HBox alignment="CENTER" GridPane.columnIndex="1">
-                <Label text="Cozinha " textFill="WHITE">
-                    <font>
-                        <Font name="Verdana Bold" size="25.0" />
-                    </font>
-                </Label>
-            </HBox>
-        </GridPane>
-    </top>
-    <center>
-        <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70.0;" BorderPane.alignment="CENTER">
-            <VBox fx:id="pedidosBoxPai" alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 20.0;" />
-        </ScrollPane>
-    </center>
+   <top>
+      <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <Button fx:id="botaoDeslogar" mnemonicParsing="false" onAction="#deslogarCozinha" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Deslogar" textAlignment="CENTER" textFill="WHITE" underline="true">
+            <font>
+               <Font name="Verdana Bold" size="14.0" />
+            </font>
+         </Button>
+         <HBox alignment="CENTER" GridPane.columnIndex="1">
+            <Label text="Cozinha " textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="25.0" />
+               </font>
+            </Label>
+         </HBox>
+      </GridPane>
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70.0;" BorderPane.alignment="CENTER">
+         <VBox fx:id="pedidosBoxPai" alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 20.0;" />
+      </ScrollPane>
+   </center>
 </BorderPane>

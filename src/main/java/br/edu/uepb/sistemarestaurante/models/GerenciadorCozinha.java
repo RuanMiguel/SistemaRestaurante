@@ -1,11 +1,18 @@
 package br.edu.uepb.sistemarestaurante.models;
 
 public class GerenciadorCozinha extends Funcionario {
-	public GerenciadorCozinha(int id, String nome, String cpf, String senha){
-        super(id, nome, cpf, senha);
+    private static final String ID_FIXO = "cozinha";
+    private static final String SENHA_FIXA = "1234";
+
+    public GerenciadorCozinha(){
+        super(ID_FIXO, SENHA_FIXA);
     }
 
-	public static void atualizarStatus(Pedido pedido){
-		pedido.alterarStatus();
-	}
+    @Override
+    public void atualizarStatus(Pedido pedido) {
+        if (pedido.getStatus() == StatusPedido.ENTREGUE) {
+            throw new IllegalStateException("Pedido já entregue não pode ser alterado");
+        }
+        pedido.alterarStatus();
+    }
 }
