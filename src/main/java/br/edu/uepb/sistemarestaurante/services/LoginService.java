@@ -14,7 +14,7 @@ public class LoginService {
         }
 
         for (Garcom garcom : garcomLoginDAO.listarGarcons()) {
-            if (garcom.getUsername().equals(usuario) && garcom.getSenha().equals(senha)) {
+            if (garcom.getId().equals(usuario) && garcom.getSenha().equals(senha)) {
                 garcomLogado = usuario;
                 return TipoFuncionario.GARCOM;
             }
