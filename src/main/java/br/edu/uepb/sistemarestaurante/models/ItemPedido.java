@@ -6,7 +6,6 @@ package br.edu.uepb.sistemarestaurante.models;
  *
  * @author Laryssa D. Ramos
  */
-
 public class ItemPedido {
     private ItemCardapio item;
     private int qtd;
@@ -77,7 +76,6 @@ public class ItemPedido {
      *
      * @return string formatada do item
      */
-
     @Override
     public String toString() {
         return qtd + "x " + item + " - Obs.: " + obs + ";";

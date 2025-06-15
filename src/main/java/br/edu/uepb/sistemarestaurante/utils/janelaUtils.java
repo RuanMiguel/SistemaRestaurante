@@ -35,7 +35,6 @@ public class janelaUtils {
      * @param <T> o tipo do controller da nova tela
      * @throws IOException se houver erro ao carregar o arquivo FXML
      */
-
     public static <T> void mudarTela(ActionEvent evento, String caminhoFXML, String titulo, Consumer<T> controllerHandler) throws IOException {
         FXMLLoader loader = new FXMLLoader(janelaUtils.class.getResource(caminhoFXML));
         Parent root = loader.load();

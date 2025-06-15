@@ -13,146 +13,146 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.MesaController">
-    <center>
-        <GridPane BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                    <children>
-                        <VBox prefWidth="290.0" spacing="10.0" style="-fx-border-color: #000000;">
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                            <padding>
-                                <Insets bottom="20.0" top="10.0" />
-                            </padding>
-                            <children>
-                                <HBox alignment="CENTER" prefHeight="15.0" prefWidth="270.0">
-                                    <children>
-                                        <Label text="Comanda ">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Label fx:id="numComanda" text="x">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </HBox>
-                                <VBox fx:id="vboxPedidos" prefWidth="270.0" spacing="5.0" />
-                                <HBox alignment="BASELINE_CENTER" prefHeight="13.0" prefWidth="270.0">
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                    <padding>
-                                        <Insets left="15.0" right="15.0" />
-                                    </padding>
-                                    <children>
-                                        <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label text="Total:">
-                                                    <font>
-                                                        <Font size="15.0" />
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                                            <children>
-                                                <Label fx:id="totalComanda" text="x">
-                                                    <font>
-                                                        <Font size="15.0" />
-                                                    </font>
-                                                </Label>
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                    </children>
-                    <opaqueInsets>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <VBox prefWidth="290.0" spacing="10.0" style="-fx-border-color: #000000;">
+                     <opaqueInsets>
                         <Insets />
-                    </opaqueInsets>
-                    <GridPane.margin>
-                        <Insets />
-                    </GridPane.margin>
-                    <padding>
-                        <Insets left="90.0" right="90.0" />
-                    </padding>
-                </VBox>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="55.0" GridPane.columnIndex="1">
-                    <children>
-                        <Button fx:id="botaoAddPedido" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chamarAddPedido" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="+ novo pedido" textAlignment="CENTER" textFill="WHITE">
-                            <font>
-                                <Font name="Verdana" size="18.0" />
-                            </font>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                        </Button>
-                        <Button fx:id="botaoVerPedidos" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chamarVerPedidos" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="ver pedidos" textAlignment="CENTER" textFill="WHITE">
-                            <font>
-                                <Font name="Verdana" size="18.0" />
-                            </font>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                        </Button>
-                        <Button fx:id="botaoFecharComanda" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fecharComanda" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="fechar comanda" textAlignment="CENTER" textFill="WHITE">
-                            <font>
-                                <Font name="Verdana" size="18.0" />
-                            </font>
-                            <cursor>
-                                <Cursor fx:constant="HAND" />
-                            </cursor>
-                        </Button>
-                    </children>
-                </VBox>
-            </children>
-        </GridPane>
-    </center>
-    <top>
-        <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Button fx:id="botaoVoltar" mnemonicParsing="false" onAction="#voltarTela" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
-                    <font>
-                        <Font name="Verdana Bold" size="14.0" />
-                    </font>
-                    <cursor>
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="20.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="15.0" prefWidth="270.0">
+                           <children>
+                              <Label text="Comanda ">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="numComanda" text="x">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="vboxPedidos" prefWidth="270.0" spacing="5.0" />
+                        <HBox alignment="BASELINE_CENTER" prefHeight="13.0" prefWidth="270.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
+                           <children>
+                              <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Total:">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="totalComanda" text="x">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="90.0" right="90.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="55.0" GridPane.columnIndex="1">
+               <children>
+                  <Button fx:id="botaoAddPedido" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chamarAddPedido" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="+ novo pedido" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana" size="18.0" />
+                     </font>
+                     <cursor>
                         <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Button>
-                <HBox alignment="CENTER" GridPane.columnIndex="1">
-                    <children>
-                        <Label text="Mesa " textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="25.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="numMesa" text="x" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="25.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-            </children>
-        </GridPane>
-    </top>
+                     </cursor>
+                  </Button>
+                  <Button fx:id="botaoVerPedidos" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#chamarVerPedidos" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="ver pedidos" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="botaoFecharComanda" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#fecharComanda" prefHeight="50.0" prefWidth="179.0" style="-fx-background-color: #7f9968; -fx-background-radius: 35px;" text="fechar comanda" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Verdana" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="botaoVoltar" mnemonicParsing="false" onAction="#voltarTela" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Voltar" textAlignment="CENTER" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Verdana Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <HBox alignment="CENTER" GridPane.columnIndex="1">
+               <children>
+                  <Label text="Mesa " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="numMesa" text="x" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+   </top>
 </BorderPane>

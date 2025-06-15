@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Comanda {
-    private Mesa mesa;
-    private Garcom garcom;
-    private String cpfNotaFiscal;
-    private double valorTotal;
-    private List<Pedido> pedidos;
     private static int qtd_instancias;
     private final int ID;
+    private Mesa mesa;
+    private Garcom garcom;
+    private List<Pedido> pedidos;
 
     public Comanda() {
         this.pedidos = new ArrayList<>();
@@ -51,23 +49,30 @@ public class Comanda {
         return total;
     }
 
-    public List<Pedido> getPedidos() {
-        return pedidos;
+    //GETTERS
+
+    public int getID() {
+        return ID;
     }
 
     public Mesa getMesa() {
         return mesa;
     }
 
-    public int getID() {
-        return ID;
-    }
-
     public Garcom getGarcom() {
         return garcom;
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
 
+    /*MESMA COISA DE listarPedido():
 
-
+    @Override
+    public String toString() {
+        return "Comanda{" +
+                "pedidos=" + pedidos +
+                '}';
+    }*/
 }

@@ -50,7 +50,7 @@ public class MesaController {
 
     private String painelMesas = "/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml";
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
-    //private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/.fxml";
+    private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/TelaPedidos.fxml";
     private int numeroMesa;
     private Garcom garcom;
 
@@ -167,15 +167,13 @@ public class MesaController {
      */
     @FXML
     private void chamarVerPedidos(ActionEvent event) throws IOException {
-        /*
         if(Mesa.getMesas().get(numeroMesa).isOcupada()){
-            janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (NOME-DO-CONTROLLER controller) -> {
+            janelaUtils.mudarTela(event, janelaVerPedidos, "Ver Pedidos", (TelaPedidosController controller) -> {
                 controller.setComanda(Mesa.getMesas().get(numeroMesa).getComanda());
             });
         } else {
             alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda associada!");
         }
-        */
     }
 
     /**
@@ -196,7 +194,4 @@ public class MesaController {
             alertaUtils.mostrarAlerta("Erro", "A mesa ainda não possui comanda associada!");
         }
     }
-
-    /*@FXML
-    public void initialize() {}*/
 }

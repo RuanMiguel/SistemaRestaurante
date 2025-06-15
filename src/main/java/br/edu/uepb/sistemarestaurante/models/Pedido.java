@@ -30,13 +30,6 @@ public class Pedido {
         this.ID = qtd_instancias;
     }
 
-    public Pedido(String number, String time, String pendente, int i) {
-        this.status = StatusPedido.PENDENTE;
-        this.HORARIO = LocalTime.now(ZoneId.of("America/Sao_Paulo"));
-
-        qtd_instancias++;
-        this.ID = qtd_instancias;
-    }
 
     //GETTERS
     /**
@@ -147,9 +140,5 @@ public class Pedido {
             total += item.CalcularSubtotal();
         }
         return total;
-    }
-
-    public boolean isAtivo(){
-        return status == StatusPedido.PENDENTE || status == StatusPedido.PREPARANDO;
     }
 }

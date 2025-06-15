@@ -12,13 +12,13 @@ import java.util.Objects;
 
 /**
  * Classe responsável por acessar os arquivos de dados dos itens do cardápio.
- * Realiza a leitura dos arquivos de texto com as informações de pratos, bebidas.txt e sobremesas,
+ * Realiza a leitura dos arquivos de texto com as informações de pratos, bebidas e sobremesas,
  * e converte essas informações em objetos do tipo {@link ItemCardapio}.
  *
  * Os arquivos devem estar disponíveis no classpath:
  * <ul>
  * <li>/br/edu/uepb/sistemarestaurante/pratos.txt</li>
- * <li>/br/edu/uepb/sistemarestaurante/bebidas.txt.txt</li>
+ * <li>/br/edu/uepb/sistemarestaurante/bebidas.txt</li>
  * <li>/br/edu/uepb/sistemarestaurante/sobremesas.txt</li>
  * </ul>
  *
@@ -39,7 +39,7 @@ public class ItensCardapioDAO {
      * Lê o conteúdo dos arquivos de texto conforme o tipo de cardápio selecionado:
      * <ul>
      *     <li>Se {@code cardapioSelecionado} for "Pratos", o metodo busca no arquivo {@code pratos.txt}.</li>
-     *     <li>Se for "Bebidas", busca em {@code bebidas.txt.txt}.</li>
+     *     <li>Se for "Bebidas", busca em {@code bebidas.txt}.</li>
      *     <li>Se for "Sobremesas", busca em {@code sobremesas.txt}, e {@code subCardapioSelecionado} será ignorado (pode ser {@code null}).</li>
      * </ul>
      *
@@ -74,8 +74,8 @@ public class ItensCardapioDAO {
                 }
                 break;
             case "Bebidas":
-                InputStream input2 = getClass().getResourceAsStream("/br/edu/uepb/sistemarestaurante/bebidas.txt.txt");
-                Objects.requireNonNull(input2, "Arquivo bebidas.txt.txt não encontrado no classpath");
+                InputStream input2 = getClass().getResourceAsStream("/br/edu/uepb/sistemarestaurante/bebidas.txt");
+                Objects.requireNonNull(input2, "Arquivo bebidas.txt não encontrado no classpath");
 
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(input2))) {
                     String linha;
