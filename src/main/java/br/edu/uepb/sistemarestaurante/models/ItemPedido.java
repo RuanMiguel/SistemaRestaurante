@@ -8,7 +8,7 @@ public class ItemPedido {
     private String obs;
 
     //CONSTRUCTOR
-    public ItemPedido(ItemCardapio item, int qtd, String obs) { //usar na função adicionarItem da classe Pedido
+    public ItemPedido(ItemCardapio item, int qtd, String obs) {
         this.item = item;
         this.qtd = qtd;
         this.obs = obs;

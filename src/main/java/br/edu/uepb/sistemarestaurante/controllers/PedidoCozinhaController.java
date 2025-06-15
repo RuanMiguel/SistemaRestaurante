@@ -1,9 +1,6 @@
 package br.edu.uepb.sistemarestaurante.controllers;
 
-import br.edu.uepb.sistemarestaurante.models.GerenciadorCozinha;
-import br.edu.uepb.sistemarestaurante.models.ItemPedido;
-import br.edu.uepb.sistemarestaurante.models.Pedido;
-import br.edu.uepb.sistemarestaurante.models.StatusPedido;
+import br.edu.uepb.sistemarestaurante.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -47,7 +44,6 @@ public class PedidoCozinhaController {
             }
         }
 
-        // Configura o botão conforme o status
         StatusPedido  statusAtual = pedido.getStatus();
         StatusPedido proximoStatus = StatusPedido.novoStatus(statusAtual);
         if(proximoStatus !=null){
