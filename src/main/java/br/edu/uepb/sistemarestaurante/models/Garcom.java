@@ -47,4 +47,11 @@ public class Garcom extends Funcionario {
 		c.adicionarPedido(pedido);
 		System.out.println("Pedido anotado para a mesa " + mesa.getNumero() + "!");
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (!(obj instanceof Garcom garcom)) return false;
+        return getId().equals(garcom.getId());
+	}
 }

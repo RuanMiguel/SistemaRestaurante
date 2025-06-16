@@ -168,12 +168,11 @@ public class PainelMesasController {
         janelaUtils.mudarTela(event, telaLogin, "Login");
     }
 
-  //falta aplicar e documentar
 
     @FXML
     private void abrirNotificacoes(ActionEvent event) throws IOException {
         janelaUtils.mudarTela(event, telaNotificacoes, "Notificações");
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/Notificacoes.fxml"));
+
 
     }
 }
