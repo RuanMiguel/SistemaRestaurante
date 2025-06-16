@@ -3,6 +3,9 @@ package br.edu.uepb.sistemarestaurante.models;
 /**
  * Classe abstrata que representa um funcionário genérico do sistema de restaurante.
  * Serve como base para diferentes tipos de funcionários com responsabilidades específicas.
+ *
+ * @author Marcella Viana
+ * @author Ruan Miguel
  */
 public abstract class Funcionario {
 	private final String id;     // Identificador único do funcionário
