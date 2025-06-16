@@ -100,6 +100,7 @@ public class PedidoCozinhaController {
      * Atualiza o status do pedido e atualiza a exibição na interface gráfica.
      *
      */
+    @FXML
     private void marcarComo() {
         try {
             gc.atualizarStatus(pedido);

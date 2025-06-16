@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Laryssa D. Ramos
  * @author Marcella Viana da Silva Lins
- * @author Letícia B.M. da Cruz
+ * @author Letícia B. M. da Cruz
  */
 public class CozinhaController {
     /** Caminhos para as views FXML utilizadas neste controlador.
@@ -34,7 +34,7 @@ public class CozinhaController {
     /** Caminho para a view FXML que representa cada pedido na cozinha.
      * Este caminho deve apontar para o arquivo FXML que define a interface de um pedido na cozinha.
      */
-    private static final String CAMINHO_PEDIDO_COZINHA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PedidoCozinhaView.fxml";
+    private static final String CAMINHO_PEDIDO_COZINHA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PedidoCozinha.fxml";
 
     /**
      * Botão para deslogar da cozinha.

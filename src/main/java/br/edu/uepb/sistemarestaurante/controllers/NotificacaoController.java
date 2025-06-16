@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ import java.util.List;
  * Carrega e exibe os pedidos prontos na interface do usuário.
  *
  * @author Marcella Viana Lins
+ *
  */
 public class NotificacaoController {
     /* * Caminho para a view do painel de mesas.
@@ -59,8 +61,9 @@ public class NotificacaoController {
      * Cada pedido é carregado em um item de notificação.
      */
     private void carregarNotificacoes() {
-        List<Pedido> pedidosProntos = ps.getPedidosNotificacao(null, null);
+//        List<Pedido> pedidosProntos = ps.getPedidosNotificacao(null, null);
         containerPedidos.getChildren().clear();
+        List<Pedido> pedidosProntos = Collections.emptyList();
 
         for (Pedido pedido : pedidosProntos) {
             try {
