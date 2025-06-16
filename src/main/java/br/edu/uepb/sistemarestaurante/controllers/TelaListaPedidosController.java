@@ -21,8 +21,8 @@ import java.time.format.DateTimeFormatter;
  * Responsável por exibir os pedidos realizados no restaurante.
  * Permite adicionar novos pedidos à lista exibida na interface gráfica.
  *
- * @author Letícia B.M. da Cruz
  * @author Marcella Viana Lins
+ * @author Ruan M ds S. Costa
  */
 public class TelaListaPedidosController {
 
