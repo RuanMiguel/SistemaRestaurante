@@ -15,6 +15,11 @@ import javafx.scene.layout.VBox;
  * @author Marcella Viana Lins
  */
 public class PedidoCozinhaController {
+    private Runnable onPedidoPronto;
+
+    public void setOnPedidoPronto(Runnable callback) {
+        this.onPedidoPronto = callback;
+    }
 
     /* * Elementos da interface gráfica (FXML)
      */
@@ -104,9 +109,13 @@ public class PedidoCozinhaController {
     private void marcarComo() {
         try {
             gc.atualizarStatus(pedido);
-            atualizarBox(); // Atualiza a UI após mudar o status
+            atualizarBox();
+
+            if (pedido.getStatus() == StatusPedido.PRONTO && onPedidoPronto != null) {
+                onPedidoPronto.run(); // Notifica o controller pai para remover da UI
+            }
+
         } catch (IllegalStateException e) {
-            // Mostra mensagem de erro para o usuário
             statusPedido.setText("Erro: " + e.getMessage());
         }
     }
