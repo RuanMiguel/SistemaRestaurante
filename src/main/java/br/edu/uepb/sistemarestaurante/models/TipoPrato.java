@@ -11,6 +11,13 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Leticia B. M. da Cruz
  */
 public enum TipoPrato {
+    /**
+     * Tipos de pratos disponíveis:
+     * - ENTRADA: Representa pratos de entrada.
+     * - PRINCIPAL: Representa pratos principais.
+     * - ACOMPANHAMENTO: Representa acompanhamentos.
+     * - PRATO_FEITO: Representa pratos feitos.
+     */
     ENTRADA("Entradas"),
     PRINCIPAL("Principais"),
     ACOMPANHAMENTO("Acompanhamentos"),

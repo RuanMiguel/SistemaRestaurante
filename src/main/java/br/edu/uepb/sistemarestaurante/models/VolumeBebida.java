@@ -11,6 +11,13 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Leticia B. M. da Cruz
  */
 public enum VolumeBebida {
+    /**
+     * Volumes de bebidas disponíveis:
+     * - 0.250L: Representa um volume de 250 mililitros.
+     * - 1L: Representa um volume de 1 litro.
+     * - 1.5L: Representa um volume de 1,5 litros.
+     * - 2L: Representa um volume de 2 litros.
+     */
     L0_250("0.250L"),
     L1("1L"),
     L1_5("1.5L"),

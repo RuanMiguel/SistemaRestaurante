@@ -11,6 +11,13 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Leticia B. M. da Cruz
  */
 public enum TipoBebida {
+    /**
+     * Tipos de bebidas disponíveis:
+     * - AGUA: Representa bebidas à base de água.
+     * - SUCO: Representa bebidas à base de suco de frutas.
+     * - REFRIGERANTE: Representa bebidas gaseificadas e açucaradas.
+     * - ALCOOLICA: Representa bebidas que contêm álcool.
+     */
     AGUA("Àguas"),
     SUCO("Sucos"),
     REFRIGERANTE("Refrigerantes"),

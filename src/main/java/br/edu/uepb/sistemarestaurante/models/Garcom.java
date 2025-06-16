@@ -48,6 +48,11 @@ public class Garcom extends Funcionario {
 		System.out.println("Pedido anotado para a mesa " + mesa.getNumero() + "!");
 	}
 
+	/**
+	 * Retorna uma representação em String do garçom.
+	 *
+	 * @return descrição textual do garçom
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;
