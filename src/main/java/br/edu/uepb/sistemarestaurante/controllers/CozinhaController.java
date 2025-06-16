@@ -2,6 +2,7 @@ package br.edu.uepb.sistemarestaurante.controllers;
 
 import br.edu.uepb.sistemarestaurante.models.GerenciadorCozinha;
 import br.edu.uepb.sistemarestaurante.models.Pedido;
+import br.edu.uepb.sistemarestaurante.models.StatusPedido;
 import br.edu.uepb.sistemarestaurante.utils.alertaUtils;
 import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
 import javafx.collections.FXCollections;
@@ -41,7 +42,7 @@ public class CozinhaController {
      * Aciona a mudança de tela para a tela de login.
      */
     @FXML
-    private Button botaoVoltar;
+    private Button botaoDeslogar;
     /**
      * Container onde os pedidos da cozinha serão exibidos.
      * Utiliza um VBox para organizar os pedidos verticalmente.
@@ -103,12 +104,17 @@ public class CozinhaController {
             }
 
             for (Pedido pedido : pedidosObservable) {
+                if (pedido.getStatus() == StatusPedido.PRONTO) continue;
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(CAMINHO_PEDIDO_COZINHA_VIEW));
                 VBox pedidoBox = loader.load();
                 PedidoCozinhaController controller = loader.getController();
 
                 controller.setPedido(pedido);
-                controller.setGerenciadorCozinheiro(new GerenciadorCozinha()); // ou um GC já existente
+                controller.setGerenciadorCozinheiro(gc);
+
+                // Callback para remover da lista quando status virar PRONTO
+                controller.setOnPedidoPronto(() -> pedidosObservable.remove(pedido));
 
                 containerPedidos.getChildren().add(pedidoBox);
             }
