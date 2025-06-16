@@ -17,7 +17,7 @@ public class Pedido {
     private StatusPedido status;
     private final LocalTime HORARIO;
     private List<ItemPedido> itens = new ArrayList<ItemPedido>();
-    private static List<Pedido> todosPedidos = new ArrayList<>();//peguei agora
+    private static List<Pedido> todosPedidos = new ArrayList<>();
 
     /**
      * Construtor padrão.
@@ -26,11 +26,24 @@ public class Pedido {
     public Pedido() {
         this.status = StatusPedido.PENDENTE;
         this.HORARIO = LocalTime.now(ZoneId.of("America/Sao_Paulo"));
+        todosPedidos.add(this);
 
         qtd_instancias++;
         this.ID = qtd_instancias;
     }
 
+    public static List<Pedido> getPedidosCozinha() {
+        List<Pedido> pedidosFiltrados = new ArrayList<>();
+
+        for (Pedido pedido : todosPedidos) {
+            if (pedido.getStatus() == StatusPedido.PENDENTE ||
+                    pedido.getStatus() == StatusPedido.PREPARANDO) {
+                pedidosFiltrados.add(pedido);
+            }
+        }
+
+        return pedidosFiltrados;
+    }
 
     //GETTERS
     /**
@@ -129,12 +142,6 @@ public class Pedido {
     public void alterarStatus(){
         this.status = StatusPedido.novoStatus(this.status);
     }
-
-    /**
-     * Calcula o valor total do pedido somando os subtotais de cada item.
-     *
-     * @return valor total do pedido
-     */
 
     public double calcularTotal(){
         double total = 0;
