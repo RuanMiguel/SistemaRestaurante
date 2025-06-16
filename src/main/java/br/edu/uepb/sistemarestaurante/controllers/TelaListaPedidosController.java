@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
  * Permite adicionar novos pedidos à lista exibida na interface gráfica.
  *
  * @author Marcella Viana Lins
- * @author Ruan M ds S. Costa
+ * @author Ruan M da S. Costa
  */
 public class TelaListaPedidosController {
 
