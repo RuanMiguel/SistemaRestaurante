@@ -16,9 +16,21 @@ import javafx.geometry.Pos;
 import java.time.format.DateTimeFormatter;
 
 
+/**
+ * Controlador para a tela de lista de pedidos.
+ * Responsável por exibir os pedidos realizados no restaurante.
+ * Permite adicionar novos pedidos à lista exibida na interface gráfica.
+ *
+ * @author Letícia B.M. da Cruz
+ * @author Marcella Viana Lins
+ */
 public class TelaListaPedidosController {
 
+    /* * VBox que contém a lista de pedidos.
+     * Cada pedido será adicionado como um card dentro deste VBox.
+     */
     @FXML private VBox vboxListaPedidos;
+
 
     /*public void adicionarPedido(Pedido pedido) {
         VBox pedidoBox = new VBox(5);
@@ -46,6 +58,13 @@ public class TelaListaPedidosController {
         vboxListaPedidos.getChildren().add(pedidoBox);
     }*/
 
+    /**
+     * Adiciona um pedido à lista de pedidos exibida na interface gráfica.
+     * Cria um card visual para o pedido, contendo informações como ID, horário,
+     * status e itens do pedido.
+     *
+     * @param pedido O objeto Pedido a ser adicionado à lista.
+     */
     public void adicionarPedido (Pedido pedido) {
         VBox cardPedido = new VBox();
         cardPedido.setSpacing(5);

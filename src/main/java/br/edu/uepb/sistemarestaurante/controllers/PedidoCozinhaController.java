@@ -7,21 +7,54 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * Controlador para gerenciar a exibição e interação com os pedidos na cozinha.
+ * Permite visualizar detalhes do pedido e atualizar seu status.
+ *
+ * @author Letícia B.M. da Cruz
+ * @author Marcella Viana Lins
+ */
 public class PedidoCozinhaController {
 
+    /* * Elementos da interface gráfica (FXML)
+     */
     @FXML private Label numIDPedido;
+    /* * Label que exibe o ID do pedido.
+     */
     @FXML private Label horarioPedido;
+    /* * Label que exibe o horário do pedido.
+     */
     @FXML private Label statusPedido;
+    /* * Label que exibe o status atual do pedido.
+     */
     @FXML private VBox itensPedidoBox;
+    /** VBox que contém os itens do pedido.
+     */
     @FXML private Button botaoStatus;
 
+    /** Botão para atualizar o status do pedido.
+     * Quando clicado, chama o método para marcar o pedido como pronto ou entregue.
+     */
     private Pedido pedido;
+    /** Pedido atual que está sendo visualizado e gerenciado.
+     */
     private GerenciadorCozinha gc;
 
+    /**
+     * Inicializa o controlador, configurando o botão de status.
+     * Este método é chamado automaticamente pelo JavaFX após a injeção dos elementos FXML.
+     */
     public void setGerenciadorCozinheiro(GerenciadorCozinha gc) {
         this.gc = gc;
     }
 
+    /**
+     * Define o pedido a ser exibido e atualizado.
+     * Este método deve ser chamado antes de exibir a interface para garantir que o pedido esteja configurado.
+     *
+     * @param pedido O pedido a ser exibido. Não pode ser null.
+     * @throws IllegalArgumentException Se o pedido for null.
+     */
     public void setPedido(Pedido pedido) {
         if (pedido == null) {
             throw new IllegalArgumentException("Pedido não pode ser null!");
@@ -30,6 +63,10 @@ public class PedidoCozinhaController {
         atualizarBox();
     }
 
+    /**
+     * Atualiza a exibição dos detalhes do pedido na interface gráfica.
+     * Este método é chamado sempre que o pedido é alterado ou atualizado.
+     */
     private void atualizarBox() {
         numIDPedido.setText("Pedido #" + pedido.getID());
         horarioPedido.setText("Horário: " + pedido.getHORARIO());
@@ -58,6 +95,11 @@ public class PedidoCozinhaController {
         }
     }
 
+    /**
+     * Método chamado quando o botão de status é clicado.
+     * Atualiza o status do pedido e atualiza a exibição na interface gráfica.
+     *
+     */
     private void marcarComo() {
         try {
             gc.atualizarStatus(pedido);

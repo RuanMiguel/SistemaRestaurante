@@ -21,37 +21,86 @@ import java.util.List;
  * Redireciona para as telas que permitem adicionar pedidos à comanda e vizualizar detalhadamente os pedidos da comanda.
  *
  * @author Laryssa D. Ramos
+ * @author Marcella Viana Lins
  */
 public class MesaController {
 
+    /**
+     * Botões e labels da interface.
+     * Utilizados para interagir com a mesa e comanda.
+     */
     @FXML
     private Button botaoAddPedido;
 
+    /* * Botão para fechar a comanda da mesa.
+     * Redireciona para o painel de mesas após fechar a comanda.
+     */
     @FXML
     private Button botaoFecharComanda;
 
+    /**
+     * Botão para vizualizar os pedidos da comanda.
+     * Redireciona para a tela que permite vizualizar detalhadamente os pedidos da comanda.
+     */
     @FXML
     private Button botaoVerPedidos;
 
+    /**
+     * Botão para voltar ao painel de mesas.
+     * Redireciona para a tela inicial do sistema de restaurante.
+     */
     @FXML
     private Button botaoVoltar;
 
+    /**
+     * Labels para exibir informações da mesa e comanda.
+     * Exibem o número da mesa, número da comanda e total da comanda.
+     */
     @FXML
     private Label numComanda;
 
+    /* * Label para exibir o número da mesa.
+     * Exibe o número da mesa atual que está sendo visualizada.
+     */
     @FXML
     private Label numMesa;
 
+    /**
+     * Label para exibir o total da comanda.
+     * Exibe o valor total dos pedidos na comanda da mesa.
+     */
     @FXML
     private Label totalComanda;
 
+    /**
+     * Container onde os pedidos da comanda serão exibidos.
+     * Utiliza VBox para organizar os pedidos verticalmente.
+     */
     @FXML
     private VBox vboxPedidos;
 
+    /**
+     * Caminhos para as views FXML utilizadas neste controlador.
+     * Esses caminhos são relativos ao diretório de recursos do projeto.
+     */
     private String painelMesas = "/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml";
+    /* * Caminho para a view FXML que representa a tela de adicionar um novo pedido.
+     * Este caminho deve apontar para o arquivo FXML que define a interface de um novo pedido.
+     */
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
+    /* * Caminho para a view FXML que representa a tela de vizualização dos pedidos da comanda.
+     * Este caminho deve apontar para o arquivo FXML que define a interface de vizualização dos pedidos.
+     */
     private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/TelaPedidos.fxml";
+    /**
+     * Número da mesa atual que está sendo visualizada.
+     * Utilizado para carregar os dados da mesa e comanda.
+     */
     private int numeroMesa;
+    /**
+     * Garçom responsável pela mesa atual.
+     * Utilizado para associar a comanda ao garçom correto.
+     */
     private Garcom garcom;
 
     /**

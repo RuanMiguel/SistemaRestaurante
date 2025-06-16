@@ -25,51 +25,72 @@ import java.util.List;
  * Utiliza DAOs e utilitários para manipular dados e trocar de telas.
  *
  * @author Laryssa D. Ramos
+ * @author Marcella Viana Lins
  */
 public class NovoPedidoController {
 
+    /* * Elementos da interface gráfica (FXML) */
     @FXML
     private Button addItem;
 
+    /** Botão para adicionar o pedido à comanda da mesa */
     @FXML
     private Button addPedido;
 
+    /** Botão para voltar à tela da mesa */
     @FXML
     private Button botaoVoltar;
 
+    /** ComboBox para selecionar a categoria do cardápio (Pratos, Bebidas, Sobremesas) */
     @FXML
     private ComboBox<String> cardapio;
 
+    /** ComboBox para selecionar o subcardápio (tipo de prato ou bebida) */
     @FXML
     private ComboBox<String> item;
 
+    /** Label que exibe o número da mesa atual */
     @FXML
     private Label numMesa;
 
+    /** Campo de texto para observações adicionais sobre o item do pedido */
     @FXML
     private TextField observacao;
 
+    /** Spinner para selecionar a quantidade do item a ser adicionado ao pedido */
     @FXML
     private Spinner<Integer> quantidade;
 
+    /** ComboBox para selecionar o subcardápio específico (ex: tipo de prato ou bebida) */
     @FXML
     private ComboBox<String> subCardapio;
 
+    /** Container VBox que agrupa o ComboBox de subcardápio */
     @FXML
     private VBox subCardapioContainer;
 
+    /** Variáveis de controle do pedido e mesa */
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
+    /** Número da mesa atual para a qual o pedido está sendo feito */
     private int numeroMesa;
+    /** Objeto Pedido que representa o novo pedido a ser criado */
     private Pedido novoPedido = new Pedido();
+    /** Variáveis auxiliares para armazenar seleções do usuário */
     private String cardapioSelecionado;
+    /** Variável para armazenar o subcardápio selecionado */
     private String subCardapioSelecionado;
+    /** Variável para armazenar o item selecionado do cardápio */
     private ItemCardapio itemSelecionado;
+    /** Quantidade selecionada pelo usuário para o item do pedido */
     private Integer qtdSelecionada;
+    /** Observação escrita pelo usuário para o item do pedido */
     private String obsEscrita;
-
+    /** Lista de categorias do cardápio (Pratos, Bebidas, Sobremesas) */
     private List<String> categoriasCardapio = new ArrayList<>(Arrays.asList("Pratos", "Bebidas", "Sobremesas"));
+    /** ObservableList para as categorias do cardápio, usada no ComboBox */
     private ObservableList<String> obsCategoriasCardapio = FXCollections.observableArrayList(categoriasCardapio);
 
+    /** Fábrica de valores para o Spinner de quantidade, com valores entre 1 e 50 */
     private SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50);
 
     /**

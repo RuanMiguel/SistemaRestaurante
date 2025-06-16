@@ -22,23 +22,35 @@ import java.io.IOException;
  *
  * @author Marcella Viana da Silva Lins
  */
-
 public class PainelMesasController {
 
+    /** Cores utilizadas para representar o estado das mesas */
     private static final String COR_DESOCUPADA = "#646363";
+    /** Cores utilizadas para representar o garçom responsável pela mesa */
     private static final String COR_RESPONSAVEL = "#108635";
+    /** Cores utilizadas para representar mesas ocupadas por outros garçons */
     private static final String COR_OUTRO_GARCOM = "#8BC34A";
 
+    /** Componentes da interface gráfica */
     @FXML private Button deslogar;
+    /** Botão para abrir o menu de notificações */
     @FXML private MenuButton menu;
+    /** Botão para acessar notificações */
     @FXML private MenuItem notificacao;
+    /** Label para exibir o nome do garçom atual (opcional, comentado) */
 //    @FXML private Label nameMesas;
+    /** Botões representando as mesas disponíveis */
     @FXML private Button mesa1, mesa2, mesa3, mesa4, mesa5, mesa6, mesa7, mesa8;
 
+    /** Garçom atualmente logado no sistema */
     private static Garcom garcomAtual;
+    /** Serviço de login para gerenciar autenticação e sessões */
     private final LoginService loginService = new LoginService();
+    /** Caminhos para as telas FXML utilizadas */
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
+    /** Caminho para a tela de login */
     private String telaLogin = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
+    /** Caminho para a tela de notificações */
     private String telaNotificacoes = "/br/edu/uepb/sistemarestaurante/views/Notificacoes.fxml";
 
     /**
@@ -168,7 +180,12 @@ public class PainelMesasController {
         janelaUtils.mudarTela(event, telaLogin, "Login");
     }
 
-
+    /**
+     * Abre a tela de notificações do sistema.
+     *
+     * @param event Evento de clique do botão.
+     * @throws IOException Caso ocorra erro ao carregar a tela de notificações.
+     */
     @FXML
     private void abrirNotificacoes(ActionEvent event) throws IOException {
         janelaUtils.mudarTela(event, telaNotificacoes, "Notificações");

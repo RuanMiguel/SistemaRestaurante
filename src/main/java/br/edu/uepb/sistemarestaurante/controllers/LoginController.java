@@ -16,32 +16,77 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Controlador responsável pela tela de login do sistema de restaurante.
+ * Permite que o usuário faça login com suas credenciais e redireciona para a tela apropriada.
+ *
+ * @author Laryssa D. Ramos
+ * @author Marcella Viana da Silva Lins
+ * @author Letícia B.M. da Cruz
+ */
 public class LoginController {
 
+    /**
+     * Campo de texto para o usuário inserir o nome de usuário.
+     */
     @FXML
     private TextField campoUsuario;
 
+    /**
+     * Campo de senha para o usuário inserir sua senha.
+     */
     @FXML
     private PasswordField campoSenha;
 
+    /**
+     * Botão para acionar o login.
+     * Quando clicado, chama o método fazerLogin.
+     */
     @FXML
     private Button botaoLogin;
 
+    /**
+     * Label para exibir mensagens de erro durante o processo de login.
+     * É visível apenas quando há um erro.
+     */
     @FXML
     private Label mensagemErro;
 
+    /**
+     * ImageView para exibir o logo do restaurante na tela de login.
+     * A imagem é carregada a partir dos recursos do projeto.
+     */
     @FXML
     private ImageView imageViewLogo;
 
+    /**
+     * Método chamado ao inicializar o controlador.
+     * Carrega a imagem do logo do restaurante na ImageView.
+     */
     @FXML
     public void initialize() {
         Image logo = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/br/edu/uepb/sistemarestaurante/images/logo-restaurante.png")));
         imageViewLogo.setImage(logo);
     }
 
+    /**
+     * Serviço de login utilizado para autenticar o usuário.
+     * É uma instância da classe LoginService, que contém a lógica de autenticação.
+     */
     private final LoginService ls = new LoginService();
+    /**
+     * Referência para a Stage atual, usada para mudar de tela.
+     * É injetada pelo JavaFX quando o controlador é carregado.
+     */
     private Stage Stage;
 
+    /**
+     * Método chamado quando o botão de login é clicado.
+     * Verifica as credenciais do usuário e redireciona para a tela apropriada.
+     *
+     * @param event O evento de ação do botão de login.
+     * @throws IOException Se ocorrer um erro ao carregar a nova tela.
+     */
     @FXML
     void fazerLogin(ActionEvent event) throws IOException {
         String usuario = campoUsuario.getText();
@@ -77,6 +122,12 @@ public class LoginController {
         }
     }
 
+    /**
+     * Exibe uma mensagem de erro na interface do usuário.
+     * A mensagem é definida no Label mensagemErro e torna-se visível.
+     *
+     * @param mensagem A mensagem de erro a ser exibida.
+     */
     private void exibirMensagemErro(String mensagem){
         mensagemErro.setText(mensagem);
         mensagemErro.setVisible(true);
