@@ -29,6 +29,7 @@ public class Pedido {
 
         qtd_instancias++;
         this.ID = qtd_instancias;
+        todosPedidos.add(this);
     }
 
 
@@ -152,14 +153,5 @@ public class Pedido {
      */
     public boolean isAtivo(){
         return status == StatusPedido.PENDENTE || status == StatusPedido.PREPARANDO;
-    }
-
-    /**
-     * Adiciona um pedido à lista referente a todos os pedidos do restaurante.
-     *
-     * @param p o pedido a ser adicionado
-     */
-    public static void adicionarATodosPedidos(Pedido p){
-        todosPedidos.add(p);
     }
 }

@@ -286,8 +286,6 @@ public class NovoPedidoController {
 
             Mesa.getMesas().get(numeroMesa).getComanda().adicionarPedido(novoPedido);
 
-            Pedido.adicionarATodosPedidos(novoPedido);
-
             janelaUtils.mudarTela(event, janelaMesa, "Mesa", (MesaController controller) -> {
                 controller.setMesa(numeroMesa);
             });
