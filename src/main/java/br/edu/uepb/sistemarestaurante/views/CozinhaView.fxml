@@ -1,43 +1,145 @@
-<?xml version="1.0" encoding="UTF-8"?>
+package br.edu.uepb.sistemarestaurante.controllers;
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+import br.edu.uepb.sistemarestaurante.models.GerenciadorCozinha;
+import br.edu.uepb.sistemarestaurante.models.Pedido;
+import br.edu.uepb.sistemarestaurante.models.StatusPedido;
+import br.edu.uepb.sistemarestaurante.utils.alertaUtils;
+import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.uepb.sistemarestaurante.controllers.CozinhaController">
-   <top>
-      <GridPane prefHeight="55.0" style="-fx-background-color: #7f9968;" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.79996337890626" minWidth="10.0" prefWidth="92.79996337890626" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="508.0000366210937" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <Button fx:id="botaoDeslogar" mnemonicParsing="false" onAction="#deslogarCozinha" prefWidth="89.0" style="-fx-background-color: #7f9968;" text="Deslogar" textAlignment="CENTER" textFill="WHITE" underline="true">
-            <font>
-               <Font name="Verdana Bold" size="14.0" />
-            </font>
-         </Button>
-         <HBox alignment="CENTER" GridPane.columnIndex="1">
-            <Label text="Cozinha " textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="25.0" />
-               </font>
-            </Label>
-         </HBox>
-      </GridPane>
-   </top>
-   <center>
-      <ScrollPane fitToWidth="true" prefHeight="345.0" prefWidth="542.0" style="-fx-padding: 70.0;" BorderPane.alignment="CENTER">
-         <VBox fx:id="containerPedidos" alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 20.0;" />
-      </ScrollPane>
-   </center>
-</BorderPane>
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
+/**
+ * Controlador para a tela de pedidos da cozinha.
+ * Gerencia a exibição e atualização dos pedidos pendentes e em preparo.
+ * Permite que o usuário deslogue e atualize manualmente a lista de pedidos.
+ *
+ * @author Laryssa D. Ramos
+ * @author Marcella Viana da Silva Lins
+ * @author Letícia B. M. da Cruz
+ */
+public class CozinhaController {
+    /** Caminhos para as views FXML utilizadas neste controlador.
+     * Esses caminhos são relativos ao diretório de recursos do projeto.
+     */
+    private static final String CAMINHO_LOGIN_VIEW = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
+    /** Caminho para a view FXML que representa cada pedido na cozinha.
+     * Este caminho deve apontar para o arquivo FXML que define a interface de um pedido na cozinha.
+     */
+    private static final String CAMINHO_PEDIDO_COZINHA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PedidoCozinha.fxml";
+
+    /**
+     * Botão para deslogar da cozinha.
+     * Aciona a mudança de tela para a tela de login.
+     */
+    @FXML
+    private Button botaoDeslogar;
+    /**
+     * Container onde os pedidos da cozinha serão exibidos.
+     * Utiliza um VBox para organizar os pedidos verticalmente.
+     */
+
+    @FXML
+    private VBox containerPedidos;
+    /**
+     * Lista observável que contém os pedidos pendentes e em preparo.
+     * Utilizada para atualizar a interface automaticamente quando a lista muda.
+     */
+
+    private ObservableList<Pedido> pedidosObservable = FXCollections.observableArrayList();
+    /**
+     * Gerenciador de cozinha responsável por manipular os pedidos.
+     * Este gerenciador pode ser usado para realizar operações adicionais nos pedidos.
+     */
+    private GerenciadorCozinha gc = new GerenciadorCozinha();
+
+    /**
+     * Método chamado ao inicializar o controlador.
+     * Configura o listener para atualizações na lista de pedidos e carrega os pedidos iniciais.
+     */
+
+    @FXML
+    private void initialize() {
+        // Configura o listener para atualizações
+        pedidosObservable.addListener((ListChangeListener<Pedido>) change -> {
+            atualizarTelaPedidos();
+        });
+
+        // Carrega os pedidos iniciais
+        carregarPedidos();
+    }
+    /**
+     * Carrega os pedidos pendentes e em preparo da cozinha.
+     * Obtém a lista de pedidos através do método estático Pedido.getPedidosCozinha().
+     * Atualiza a lista observável com os pedidos carregados.
+     */
+    @FXML
+    private void carregarPedidos() {
+        List<Pedido> pedidosCozinha = Pedido.getPedidosCozinha(); // Usa o método estático
+        pedidosObservable.setAll(pedidosCozinha);
+    }
+    /**
+     * Atualiza a tela de pedidos, limpando o container e recarregando os pedidos.
+     * Carrega cada pedido na interface usando o FXML correspondente.
+     * Exibe um alerta em caso de falha ao carregar os pedidos.
+     */
+
+    @FXML
+    private void atualizarTelaPedidos() {
+        containerPedidos.getChildren().clear();
+
+        try {
+            URL fxmlUrl = getClass().getResource(CAMINHO_PEDIDO_COZINHA_VIEW);
+            if (fxmlUrl == null) {
+                throw new IOException("Arquivo FXML não encontrado: " + CAMINHO_PEDIDO_COZINHA_VIEW);
+            }
+
+            for (Pedido pedido : pedidosObservable) {
+                if (pedido.getStatus() == StatusPedido.PRONTO) continue;
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(CAMINHO_PEDIDO_COZINHA_VIEW));
+                VBox pedidoBox = loader.load();
+                PedidoCozinhaController controller = loader.getController();
+
+                controller.setPedido(pedido);
+                controller.setGerenciadorCozinheiro(gc);
+
+                // Callback para remover da lista quando status virar PRONTO
+                controller.setOnPedidoPronto(() -> pedidosObservable.remove(pedido));
+
+                containerPedidos.getChildren().add(pedidoBox);
+            }
+        } catch (IOException e) {
+            alertaUtils.mostrarAlerta("Erro", "Falha ao carregar pedidos");
+        }
+    }
+    /**
+     * Método para deslogar da cozinha e retornar à tela de login.
+     * Aciona a mudança de tela para a tela de login.
+     *
+     * @param event Evento de ação do botão de deslogar
+     * @throws IOException Se ocorrer um erro ao carregar a tela de login
+     */
+
+    @FXML
+    public void deslogarCozinha(ActionEvent event) throws IOException {
+        janelaUtils.mudarTela(event, CAMINHO_LOGIN_VIEW, "Login");
+    }
+
+    /**
+     * Método para atualizar manualmente a lista de pedidos
+     */
+    public void atualizarPedidos() {
+        List<Pedido> novosPedidos = Pedido.getPedidosCozinha();
+        pedidosObservable.setAll(novosPedidos);
+    }
+}
