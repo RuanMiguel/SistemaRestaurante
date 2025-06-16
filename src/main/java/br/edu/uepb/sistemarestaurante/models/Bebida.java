@@ -54,4 +54,13 @@ public class Bebida extends ItemCardapio {
         return String.format("%s [Tipo: %s, Volume: %s, Preço: R$%.2f]",
                 getNome(), tipo, volume, getPreco());
     }
+
+    /**
+     * Retorna uma representação em string do volume da bebida.
+     *
+     * @return String formatada do volume da bebida
+     */
+    public String getStringVolume(){
+        return volume.getVolume();
+    }
 }
