@@ -165,7 +165,6 @@ public class PainelMesasController {
 
     @FXML
     private void deslogarFuncionario(ActionEvent event) throws IOException {
-        LoginService.logout();
         janelaUtils.mudarTela(event, telaLogin, "Login");
     }
 

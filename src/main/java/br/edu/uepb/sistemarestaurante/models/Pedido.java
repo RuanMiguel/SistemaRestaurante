@@ -17,6 +17,7 @@ public class Pedido {
     private StatusPedido status;
     private final LocalTime HORARIO;
     private List<ItemPedido> itens = new ArrayList<ItemPedido>();
+    private static List<Pedido> todosPedidos = new ArrayList<>();//peguei agora
 
     /**
      * Construtor padrão.
@@ -134,6 +135,7 @@ public class Pedido {
      *
      * @return valor total do pedido
      */
+
     public double calcularTotal(){
         double total = 0;
         for(ItemPedido item : itens){

@@ -161,8 +161,7 @@ public class NovoPedidoController {
                 List<String> nomeItens = new ArrayList<>();
 
                 for(ItemCardapio i : dao.listarItensCardapio(cardapioSelecionado, subCardapioSelecionado)){
-                    if(i instanceof Bebida) {
-                        Bebida bebida = (Bebida) i;
+                    if(i instanceof Bebida bebida) {
                         nomeItens.add(i.getNome()+" - "+bebida.getStringVolume());
                     } else {
                         nomeItens.add(i.getNome());

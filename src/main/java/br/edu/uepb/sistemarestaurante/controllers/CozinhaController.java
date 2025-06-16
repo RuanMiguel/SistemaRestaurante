@@ -67,7 +67,7 @@ public class CozinhaController {
 
         try {
             URL fxmlUrl = getClass().getResource(
-                    "/br/edu/uepb/sistemarestaurante/views/PedidoCozinhaView.fxml");
+                    "/br/edu/uepb/sistemarestaurante/views/PedidoCozinha.fxml");
 
             if (fxmlUrl == null) {
                 throw new IOException("Arquivo FXML não encontrado");
