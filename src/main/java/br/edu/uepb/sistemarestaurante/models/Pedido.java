@@ -143,7 +143,11 @@ public class Pedido {
     public void alterarStatus(){
         this.status = StatusPedido.novoStatus(this.status);
     }
-
+    /**
+     * Calcula o total do pedido, somando os subtotais de todos os itens.
+     *
+     * @return total do pedido
+     */
     public double calcularTotal(){
         double total = 0;
         for(ItemPedido item : itens){
