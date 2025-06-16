@@ -32,10 +32,10 @@ public class PainelMesasController {
     @FXML private Button deslogar;
     @FXML private MenuButton menu;
     @FXML private MenuItem notificacao;
-    @FXML private Label nameMesas;
+//    @FXML private Label nameMesas;
     @FXML private Button mesa1, mesa2, mesa3, mesa4, mesa5, mesa6, mesa7, mesa8;
 
-    private Garcom garcomAtual;
+    private static Garcom garcomAtual;
     private final LoginService loginService = new LoginService();
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
     private String telaLogin = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
@@ -64,13 +64,15 @@ public class PainelMesasController {
      * @param garcom Garçom atualmente autenticado no sistema.
      */
 
+    @FXML
     public void setGarcomAtual(Garcom garcom) {
-        this.garcomAtual = garcom;
+        garcomAtual = garcom;
         if (garcom != null) {
-            nameMesas.setText("Garçom: " + garcom.getId());
+//            nameMesas.setText("Garçom: " + garcom.getId());
             atualizarTodasAsCores();
         }
     }
+
 
     /**
      * Configura um botão de mesa com base no número da mesa e nas permissões do garçom.
@@ -90,9 +92,7 @@ public class PainelMesasController {
 
         Comanda comanda = mesa.getComanda();
 
-        boolean podeAcessar = (comanda == null) ||
-                (comanda.getGarcom() != null && garcomAtual != null &&
-                        garcomAtual.getId().equals(comanda.getGarcom().getId()));
+        boolean podeAcessar = (comanda == null || (comanda.getGarcom().equals(garcomAtual)));
 
         if (podeAcessar) {
             botao.setDisable(false);
@@ -165,8 +165,8 @@ public class PainelMesasController {
 
     @FXML
     private void deslogarFuncionario(ActionEvent event) throws IOException {
-        LoginService.logout(); //FIXME
-        janelaUtils.mudarTela(event, telaLogin, "Login", null);
+        LoginService.logout();
+        janelaUtils.mudarTela(event, telaLogin, "Login");
     }
 
   //falta aplicar e documentar

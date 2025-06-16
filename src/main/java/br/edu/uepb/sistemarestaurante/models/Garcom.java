@@ -21,4 +21,10 @@ public class Garcom extends Funcionario{
         System.out.print("Pedido anotado!");
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Garcom garcom)) return false;
+        return getId().equals(garcom.getId());
+    }
 }
