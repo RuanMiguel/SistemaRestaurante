@@ -18,12 +18,14 @@ public class PedidoCozinhaController {
     private Pedido pedido;
     private GerenciadorCozinha gc;
 
-    // Metodo para injetar o gerenciador
     public void setGerenciadorCozinheiro(GerenciadorCozinha gc) {
         this.gc = gc;
     }
 
     public void setPedido(Pedido pedido) {
+        if (pedido == null) {
+            throw new IllegalArgumentException("Pedido não pode ser null!");
+        }
         this.pedido = pedido;
         atualizarBox();
     }
@@ -47,16 +49,16 @@ public class PedidoCozinhaController {
         StatusPedido  statusAtual = pedido.getStatus();
         StatusPedido proximoStatus = StatusPedido.novoStatus(statusAtual);
         if(proximoStatus !=null){
-                    botaoStatus.setText("Marcar como " + proximoStatus);
-                    botaoStatus.setDisable(false);
-                    botaoStatus.setOnAction(e -> atualizarStatusPedido());
+            botaoStatus.setText("Marcar como " + proximoStatus);
+            botaoStatus.setDisable(false);
+            botaoStatus.setOnAction(e -> marcarComo());
         }else{
             botaoStatus.setText("Entregue");
             botaoStatus.setDisable(true);
         }
     }
 
-    private void atualizarStatusPedido() {
+    private void marcarComo() {
         try {
             gc.atualizarStatus(pedido);
             atualizarBox(); // Atualiza a UI após mudar o status

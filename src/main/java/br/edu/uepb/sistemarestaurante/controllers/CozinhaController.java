@@ -1,5 +1,6 @@
 package br.edu.uepb.sistemarestaurante.controllers;
 
+import br.edu.uepb.sistemarestaurante.models.GerenciadorCozinha;
 import br.edu.uepb.sistemarestaurante.models.Pedido;
 import br.edu.uepb.sistemarestaurante.utils.alertaUtils;
 import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
@@ -55,6 +56,7 @@ public class CozinhaController {
      */
 
     private ObservableList<Pedido> pedidosObservable = FXCollections.observableArrayList();
+    private GerenciadorCozinha gc = new GerenciadorCozinha();
 
     /**
      * Método chamado ao inicializar o controlador.
@@ -98,10 +100,13 @@ public class CozinhaController {
             }
 
             for (Pedido pedido : pedidosObservable) {
-                FXMLLoader loader = new FXMLLoader(fxmlUrl);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(CAMINHO_PEDIDO_COZINHA_VIEW));
                 VBox pedidoBox = loader.load();
                 PedidoCozinhaController controller = loader.getController();
+
                 controller.setPedido(pedido);
+                controller.setGerenciadorCozinheiro(new GerenciadorCozinha()); // ou um GC já existente
+
                 containerPedidos.getChildren().add(pedidoBox);
             }
         } catch (IOException e) {

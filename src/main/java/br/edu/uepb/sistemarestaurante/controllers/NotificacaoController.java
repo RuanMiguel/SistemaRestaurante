@@ -1,11 +1,11 @@
 package br.edu.uepb.sistemarestaurante.controllers;
 
 import br.edu.uepb.sistemarestaurante.models.Pedido;
-import br.edu.uepb.sistemarestaurante.services.PedidosService;
+import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotificacaoController {
+    private static final String CAMINHO_PAINEL_MESA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PainelMesa.fxml";
+
     @FXML private Button botaoVoltar;
 
     @FXML
@@ -20,38 +22,27 @@ public class NotificacaoController {
 
     @FXML
     public void initialize() {
-        configurarBotaoVoltar();
         carregarNotificacoes();
     }
 
-    PedidosService ps = new PedidosService();
-    private void configurarBotaoVoltar() {
-        botaoVoltar.setOnAction(event -> {
-            // Voltar para Login
-        });
+    private void botaoVoltar(ActionEvent event) throws IOException {
+        janelaUtils.mudarTela(event, "CAMINHO_PAINEL_MESA_VIEW", "Centro de Mesas");
     }
 
     private void carregarNotificacoes() {
-        // 1. Busca os pedidos prontos (exemplo: do banco de dados ou serviço)
         List<Pedido> pedidosProntos = ps.getPedidosNotificacao(null, null);
-
         containerPedidos.getChildren().clear();
 
         for (Pedido pedido : pedidosProntos) {
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/br/edu/uepb/sistemarestaurante/views/PedidoItemController.fxml")
+                        getClass().getResource("/br/edu/uepb/sistemarestaurante/views/PedidoNotificacaoController.fxml")
                 );
-                HBox pedidoItem = loader.load();  // Carrega o layout do item
+                HBox pedidoItem = loader.load();
 
-                // Obtém o controlador do item e define os dados
                 PedidoNotificacaoController controller = loader.getController();
-                controller.setPedidoInfo(
-                        null,
-                        null, null //TODO: Substitua por garcom se necessário
-                );
+                controller.setPedidoInfo(null, null, null);
 
-                // Adiciona o item ao container
                 containerPedidos.getChildren().add(pedidoItem);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -66,7 +57,7 @@ public class NotificacaoController {
         return new ArrayList<>();
     }
 
-    private void Entregar(Pedido pedido) {
+    private void entregar(Pedido pedido) {
         System.out.println("Pedido " + pedido.getID() + " marcado como entregue");
         // Implemente a lógica para atualizar no banco de dados/serviço
     }

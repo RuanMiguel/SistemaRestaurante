@@ -4,8 +4,7 @@ package br.edu.uepb.sistemarestaurante.models;
  * Classe que representa um item de sobremesa no cardápio do restaurante.
  * Herda de ItemCardapio e representa itens sobremesas do restaurante.
  *
- * @author [Seu Nome ou Equipe]
- * @version 1.0
+ * @author Letícia
  */
 public class Sobremesa extends ItemCardapio {
 
