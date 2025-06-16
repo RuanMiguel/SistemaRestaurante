@@ -18,8 +18,8 @@ import java.io.IOException;
  * Responsável por exibir os pedidos de uma comanda específica.
  * Permite navegar de volta para a tela da mesa associada à comanda.
  *
- * @author Letícia B.M. da Cruz
  * @author Marcella Viana Lins
+ * @author Ruan M da S. Costa
  */
 public class TelaPedidosController {
 
