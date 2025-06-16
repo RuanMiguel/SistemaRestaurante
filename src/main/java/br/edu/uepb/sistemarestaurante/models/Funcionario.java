@@ -1,22 +1,51 @@
 package br.edu.uepb.sistemarestaurante.models;
 
-abstract class Funcionario {
-    private final String id;
-    private final String senha;
+/**
+ * Classe abstrata que representa um funcionário genérico do sistema de restaurante.
+ * Serve como base para tipos de funcionários diferentes (Garçom e Gerenciador da Cozinha)
+ * e cada um com uma responsabilidade específica.
+ *
+ * @author Marcella Viana
+ * @author Ruan Miguel
+ */
+public abstract class Funcionario {
+	private final String id;     // Identificador único do funcionário
+	private final String senha;  // Senha de acesso do funcionário
 
-    protected Funcionario(String id, String senha){
-        this.id = id;
-        this.senha = senha;
-    }
+	/**
+	 * Construtor protegido para a classe abstrata Funcionario.
+	 *
+	 * @param id    Identificador único do funcionário
+	 * @param senha Senha de acesso do funcionário
+	 */
+	protected Funcionario(String id, String senha) {
+		this.id = id;
+		this.senha = senha;
+	}
 
-    public abstract void atualizarStatus(Pedido pedido);
+	/**
+	 * Método abstrato para atualizar o status de um pedido.
+	 * Deve ser implementado pelas classes concretas que herdam de Funcionario.
+	 *
+	 * @param pedido O pedido cujo status será atualizado
+	 */
+	public abstract void atualizarStatus(Pedido pedido);
 
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Retorna o ID do funcionário.
+	 *
+	 * @return String contendo o ID do funcionário
+	 */
+	public String getId() {
+		return id;
+	}
 
-    public String getSenha() {
-        return senha;
-    }
-
+	/**
+	 * Retorna a senha do funcionário.
+	 *
+	 * @return String contendo a senha do funcionário
+	 */
+	public String getSenha() {
+		return senha;
+	}
 }
