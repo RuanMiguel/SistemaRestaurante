@@ -11,17 +11,30 @@ public class Pedido {
     private StatusPedido status;
     private final LocalTime HORARIO;
     private List<ItemPedido> itens = new ArrayList<ItemPedido>();
-    private List<Pedido> todosPedidos = new ArrayList();
+    private static List<Pedido> todosPedidos = new ArrayList<>();
 
     //CONSTRUCTOR
     public Pedido() {
         this.status = StatusPedido.PENDENTE;
         this.HORARIO = LocalTime.now(ZoneId.of("America/Sao_Paulo"));
+        todosPedidos.add(this);
 
         qtd_instancias++;
         this.ID = qtd_instancias;
     }
 
+    public static List<Pedido> getPedidosCozinha() {
+        List<Pedido> pedidosFiltrados = new ArrayList<>();
+
+        for (Pedido pedido : todosPedidos) {
+            if (pedido.getStatus() == StatusPedido.PENDENTE ||
+                    pedido.getStatus() == StatusPedido.PREPARANDO) {
+                pedidosFiltrados.add(pedido);
+            }
+        }
+
+        return pedidosFiltrados;
+    }
 
     //GETTERS
     public int getID() {

@@ -19,8 +19,9 @@ public class alertaUtils {
      *
      * @param titulo   o título da janela de alerta
      * @param mensagem o texto da mensagem a ser exibida no conteúdo do alerta
+     * @param message
      */
-    public static void mostrarAlerta(String titulo, String mensagem) {
+    public static void mostrarAlerta(String titulo, String mensagem, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(titulo);
         alert.setHeaderText(null);

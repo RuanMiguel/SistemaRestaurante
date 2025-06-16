@@ -1,11 +1,11 @@
 package br.edu.uepb.sistemarestaurante.controllers;
 
-import br.edu.uepb.sistemarestaurante.models.ItemCardapio;
-import br.edu.uepb.sistemarestaurante.models.ItemPedido;
 import br.edu.uepb.sistemarestaurante.models.Pedido;
-import br.edu.uepb.sistemarestaurante.models.StatusPedido;
 import br.edu.uepb.sistemarestaurante.utils.alertaUtils;
 import br.edu.uepb.sistemarestaurante.utils.janelaUtils;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,76 +16,63 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-/**
- * Controller responsável pela interface da cozinha do sistema de restaurante.
- * Gerencia a exibição e manipulação de pedidos em status PENDENTE ou PREPARANDO.
- *
- * @author Letícia B. M. da Cruz
- * @see Pedido
- * @see StatusPedido
- * @see PedidoCozinhaController
- */
 public class CozinhaController {
+    private static final String CAMINHO_LOGIN_VIEW = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
+    private static final String CAMINHO_PEDIDO_COZINHA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PedidoCozinhaView.fxml";
+
     @FXML
     private Button botaoVoltar;
-
     @FXML
     private VBox containerPedidos;
 
-    /**
-     * Inicializa o controller. Método chamado automaticamente após o carregamento do FXML.
-     */
+    private ObservableList<Pedido> pedidosObservable = FXCollections.observableArrayList();
+
     @FXML
     private void initialize() {
-        // Pode ser usado para configurações iniciais
+        // Configura o listener para atualizações
+        pedidosObservable.addListener((ListChangeListener<Pedido>) change -> {
+            atualizarTelaPedidos();
+        });
+
+        // Carrega os pedidos iniciais
+        carregarPedidos();
     }
 
-    /**
-     * Realiza o logout do usuário da tela da cozinha, retornando à tela de login.
-     *
-     * @param event O evento de ação que disparou o método
-     * @throws RuntimeException Se ocorrer um erro durante a mudança de tela
-     */
-    public void deslogarCozinha(ActionEvent event) throws IOException {
-        String janelaLogin = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
-        janelaUtils.mudarTela(event, janelaLogin, "Login");
+    private void carregarPedidos() {
+        List<Pedido> pedidosCozinha = Pedido.getPedidosCozinha(); // Usa o método estático
+        pedidosObservable.setAll(pedidosCozinha);
     }
 
-    /**
-     * Exibe os pedidos na interface da cozinha.
-     * Mostra apenas pedidos com status PENDENTE ou PREPARANDO.
-     *
-     * @param pedidos Lista de pedidos a serem exibidos
-     * @throws IllegalArgumentException Se a lista de pedidos for nula
-     */
-    public void exibirPedidos(List<Pedido> pedidos) {
-        if (pedidos == null) {
-            throw new IllegalArgumentException("Lista de pedidos não pode ser nula");
-        }
-
+    private void atualizarTelaPedidos() {
         containerPedidos.getChildren().clear();
 
         try {
-            URL fxmlUrl = getClass().getResource(
-                    "/br/edu/uepb/sistemarestaurante/views/PedidoCozinhaView.fxml");
-
+            URL fxmlUrl = getClass().getResource(CAMINHO_PEDIDO_COZINHA_VIEW);
             if (fxmlUrl == null) {
-                throw new IOException("Arquivo FXML não encontrado");
+                throw new IOException("Arquivo FXML não encontrado: " + CAMINHO_PEDIDO_COZINHA_VIEW);
             }
 
-            for (Pedido pedido : pedidos) {
-                if (pedido.getStatus() == StatusPedido.PENDENTE ||
-                        pedido.getStatus() == StatusPedido.PREPARANDO) {
-
-                    FXMLLoader loader = new FXMLLoader(fxmlUrl);
-                    VBox pedidoBox = loader.load();
-                    PedidoCozinhaController controller = loader.getController();
-                    controller.setPedido(pedido);
-                    containerPedidos.getChildren().add(pedidoBox);
-                }
+            for (Pedido pedido : pedidosObservable) {
+                FXMLLoader loader = new FXMLLoader(fxmlUrl);
+                VBox pedidoBox = loader.load();
+                PedidoCozinhaController controller = loader.getController();
+                controller.setPedido(pedido);
+                containerPedidos.getChildren().add(pedidoBox);
             }
         } catch (IOException e) {
-            alertaUtils.mostrarAlerta("Erro", "Não foi possível carregar os pedidos: " + e.getMessage());
+            alertaUtils.mostrarAlerta("Erro", "Falha ao carregar pedidos", e.getMessage());
         }
+    }
+
+    public void deslogarCozinha(ActionEvent event) throws IOException {
+        janelaUtils.mudarTela(event, CAMINHO_LOGIN_VIEW, "Login");
+    }
+
+    /**
+     * Método para atualizar manualmente a lista de pedidos
+     */
+    public void atualizarPedidos() {
+        List<Pedido> novosPedidos = Pedido.getPedidosCozinha();
+        pedidosObservable.setAll(novosPedidos);
     }
 }
