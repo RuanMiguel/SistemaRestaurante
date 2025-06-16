@@ -43,7 +43,13 @@ public class Comanda {
         }
     }
 
-
+    public double calcularTotal(){
+        double total = 0;
+        for(Pedido pedido : pedidos){
+            total += pedido.calcularTotal();
+        }
+        return total;
+    }
 
     //GETTERS
 

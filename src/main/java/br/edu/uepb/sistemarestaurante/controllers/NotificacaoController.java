@@ -9,6 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificacaoController {
@@ -32,7 +33,7 @@ public class NotificacaoController {
 
     private void carregarNotificacoes() {
         // 1. Busca os pedidos prontos (exemplo: do banco de dados ou serviço)
-        List<Pedido> pedidosProntos = ps.getPedidosNotificacao();
+        List<Pedido> pedidosProntos = ps.getPedidosNotificacao(null, null);
 
         containerPedidos.getChildren().clear();
 
@@ -46,8 +47,8 @@ public class NotificacaoController {
                 // Obtém o controlador do item e define os dados
                 PedidoNotificacaoController controller = loader.getController();
                 controller.setPedidoInfo(
-                        pedido.getID(),
-                        pedido.getMesa().getNumero()
+                        null,
+                        null, null //TODO: Substitua por garcom se necessário
                 );
 
                 // Adiciona o item ao container
@@ -61,7 +62,8 @@ public class NotificacaoController {
 
     private List<Pedido> pegarPedidosPendentes() {
         // Implemente conforme sua lógica de negócios
-
+        //TODO: Retornar lista de pedidos pendentes
+        return new ArrayList<>();
     }
 
     private void Entregar(Pedido pedido) {

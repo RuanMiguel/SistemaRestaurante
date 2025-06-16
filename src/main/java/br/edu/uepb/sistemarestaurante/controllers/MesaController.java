@@ -95,7 +95,7 @@ public class MesaController {
             List<Pedido> pedidos = comanda.getPedidos();
 
             numComanda.setText(String.valueOf(comanda.getID()));
-            totalComanda.setText(String.format("R$ %.2f", comanda.caucularTotal()));
+            totalComanda.setText(String.format("R$ %.2f", comanda.calcularTotal()));
 
             for (Pedido pedido : pedidos) {
                 // Cria a estrutura de uma linha de pedido
