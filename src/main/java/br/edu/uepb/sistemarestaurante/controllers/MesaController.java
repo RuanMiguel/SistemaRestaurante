@@ -141,21 +141,15 @@ public class MesaController {
     }
 
     /**
-     * Manipula o clique no botão "Adicionar Pedido". Se a mesa estiver desocupada, a mesa é ocupada e é criada uma nova comanda.
-     * Em seguida, redireciona para a tela de adicionar pedido à comanda.
+     * Manipula o clique no botão "Adicionar Pedido", redirecionando para a tela de adicionar pedido à comanda.
      *
      * @param event o evento de clique no botão
      * @throws IOException se a tela não puder ser carregada
      */
     @FXML
     private void chamarAddPedido(ActionEvent event) throws IOException {
-        if(!Mesa.getMesas().get(numeroMesa).isOcupada()){
-            Mesa.getMesas().get(numeroMesa).ocupar();
-            Mesa.getMesas().get(numeroMesa).setComanda(new Comanda(Mesa.getMesas().get(numeroMesa), this.garcom));
-        }
-
         janelaUtils.mudarTela(event, janelaNovoPedido, "Novo Pedido", (NovoPedidoController controller) -> {
-            controller.setMesa(numeroMesa);
+            controller.setMesaEGarcom(numeroMesa, garcom);
         });
     }
 

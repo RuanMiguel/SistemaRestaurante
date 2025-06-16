@@ -60,6 +60,7 @@ public class NovoPedidoController {
 
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
     private int numeroMesa;
+    private Garcom garcom;
     private Pedido novoPedido = new Pedido();
     private String cardapioSelecionado;
     private String subCardapioSelecionado;
@@ -73,12 +74,14 @@ public class NovoPedidoController {
     private SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 50);
 
     /**
-     * Define a mesa atual para a qual o pedido será feito.
+     * Define a mesa atual para a qual o pedido será feito e o garçom responsável.
      *
      * @param numeroMesa o número da mesa
+     * @param garcom o garçom responsável pela mesa
      */
-    public void setMesa(int numeroMesa) {
+    public void setMesaEGarcom(int numeroMesa, Garcom garcom) {
         this.numeroMesa = numeroMesa;
+        this.garcom = garcom;
         numMesa.setText(String.format("%02d", Mesa.getMesas().get(numeroMesa).getNumero()));
     }
 
@@ -267,7 +270,8 @@ public class NovoPedidoController {
     }
 
     /**
-     * Adiciona o pedido atual à comanda da mesa e retorna à tela da mesa atual.
+     * Verifica se a mesa està desocupada, ocupando-a e criando uma nova comanda em caso afirmativo.
+     * Adiciona o pedido atual à comanda da mesa e à lista estatica de pedidos da classe {@link Pedido} e retorna à tela da mesa atual.
      *
      * @param event o evento do botão
      * @throws IOException se houver erro ao mudar de tela
@@ -275,7 +279,15 @@ public class NovoPedidoController {
     @FXML
     private void adicionarPedidoAComanda(ActionEvent event) throws IOException {
         if(!novoPedido.getItens().isEmpty()) {
+            if(!Mesa.getMesas().get(numeroMesa).isOcupada()){
+                Mesa.getMesas().get(numeroMesa).ocupar();
+                Mesa.getMesas().get(numeroMesa).setComanda(new Comanda(Mesa.getMesas().get(numeroMesa), this.garcom));
+            }
+
             Mesa.getMesas().get(numeroMesa).getComanda().adicionarPedido(novoPedido);
+
+            Pedido.adicionarATodosPedidos(novoPedido);
+
             janelaUtils.mudarTela(event, janelaMesa, "Mesa", (MesaController controller) -> {
                 controller.setMesa(numeroMesa);
             });
