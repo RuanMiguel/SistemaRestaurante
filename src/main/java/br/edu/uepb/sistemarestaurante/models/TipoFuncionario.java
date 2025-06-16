@@ -5,6 +5,7 @@ package br.edu.uepb.sistemarestaurante.models;
  * Utilizado para controle de acesso e definição de permissões no sistema.
  *
  * @author Letícia B. M Cruz
+ * @author Marcella Viana da Silva Lins
  */
 public enum TipoFuncionario {
     /**
