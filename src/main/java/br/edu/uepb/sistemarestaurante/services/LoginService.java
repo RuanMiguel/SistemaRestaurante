@@ -14,7 +14,7 @@ import br.edu.uepb.sistemarestaurante.models.TipoFuncionario;
  */
 public class LoginService {
     private final GarcomLoginDAO garcomLoginDAO = new GarcomLoginDAO();
-    private String garcomLogado;
+    private Garcom garcomLogado;
 
     /**
      * Realiza a autenticação de um funcionário.
@@ -33,7 +33,7 @@ public class LoginService {
 
         for (Garcom garcom : garcomLoginDAO.listarGarcons()) {
             if (garcom.getId().equals(idUsuario) && garcom.getSenha().equals(senha)) {
-                garcomLogado = idUsuario;
+                this.garcomLogado = garcom;
                 return TipoFuncionario.GARCOM;
             }
         }
@@ -45,7 +45,7 @@ public class LoginService {
      *
      * @return ID do garçom logado, ou {@code null} se nenhum garçom estiver autenticado
      */
-    public String getGarcomLogado() {
+    public Garcom getGarcomLogado() {
         return garcomLogado;
     }
 }
