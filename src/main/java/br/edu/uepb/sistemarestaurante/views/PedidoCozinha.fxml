@@ -13,7 +13,7 @@
     </VBox>
 
     <VBox fx:id="itensPedidoBox" alignment="CENTER_LEFT" spacing="5">
-        <!-- os itens serão adicionados dinamicamente aqui -->
+        <!-- os itens serão adicionados aqui -->
     </VBox>
 
     <Button fx:id="botaoStatus" onAction="#marcarComo" style="-fx-background-color: #7f9968; -fx-text-fill: white;" text="Marcar como " />
