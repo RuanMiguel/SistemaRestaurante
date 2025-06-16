@@ -12,9 +12,19 @@ public class App extends Application {
         launch(args);
     }
 
+    /**
+     * Método que inicia a aplicação JavaFX.
+     * Carrega o arquivo FXML da tela de login e exibe a janela principal.
+     *
+     * @param primaryStage A janela principal da aplicação.
+     * @throws Exception Se ocorrer algum erro ao carregar o FXML.
+     *
+     * @author Marcella Viana da Silva Lins
+     */
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/LoginView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml"));
         Parent root = fxmlLoader.load();
         Scene tela = new Scene(root, 520, 400);
 

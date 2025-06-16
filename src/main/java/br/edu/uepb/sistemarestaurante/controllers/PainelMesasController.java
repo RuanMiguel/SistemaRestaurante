@@ -38,6 +38,8 @@ public class PainelMesasController {
     private Garcom garcomAtual;
     private final LoginService loginService = new LoginService();
     private String janelaMesa = "/br/edu/uepb/sistemarestaurante/views/Mesa.fxml";
+    private String telaLogin = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
+    private String telaNotificacoes = "/br/edu/uepb/sistemarestaurante/views/Notificacoes.fxml";
 
     /**
      * Método chamado automaticamente pelo JavaFX após a carga do FXML.
@@ -65,7 +67,7 @@ public class PainelMesasController {
     public void setGarcomAtual(Garcom garcom) {
         this.garcomAtual = garcom;
         if (garcom != null) {
-            nameMesas.setText("Garçom: " + garcom.getUsername());
+            nameMesas.setText("Garçom: " + garcom.getId());
             atualizarTodasAsCores();
         }
     }
@@ -90,7 +92,7 @@ public class PainelMesasController {
 
         boolean podeAcessar = (comanda == null) ||
                 (comanda.getGarcom() != null && garcomAtual != null &&
-                        garcomAtual.getUsername().equals(comanda.getGarcom().getUsername()));
+                        garcomAtual.getId().equals(comanda.getGarcom().getId()));
 
         if (podeAcessar) {
             botao.setDisable(false);
@@ -131,9 +133,9 @@ public class PainelMesasController {
     private void atualizarCorMesa(Button botao, Mesa mesa) {
         Comanda comanda = mesa.getComanda();
 
-        if (comanda == null || comanda.getGarcom() == null || comanda.getGarcom().getUsername() == null) {
+        if (comanda == null || comanda.getGarcom() == null || comanda.getGarcom().getId() == null) {
             botao.setStyle("-fx-background-color: " + COR_DESOCUPADA + "; -fx-text-fill: white;");
-        } else if (garcomAtual != null && garcomAtual.getUsername().equals(comanda.getGarcom().getUsername())) {
+        } else if (garcomAtual != null && garcomAtual.getId().equals(comanda.getGarcom().getId())) {
             botao.setStyle("-fx-background-color: " + COR_RESPONSAVEL + "; -fx-text-fill: white;");
         } else {
             botao.setStyle("-fx-background-color: " + COR_OUTRO_GARCOM + "; -fx-text-fill: white;");
@@ -162,25 +164,17 @@ public class PainelMesasController {
 
 
     @FXML
-    private void deslogarFuncionario() throws IOException {
-        LoginService.logout();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/LoginView.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) deslogar.getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+    private void deslogarFuncionario(ActionEvent event) throws IOException {
+        LoginService.logout(); //FIXME
+        janelaUtils.mudarTela(event, telaLogin, "Login", null);
     }
 
   //falta aplicar e documentar
 
     @FXML
-    private void abrirNotificacoes() throws IOException {
+    private void abrirNotificacoes(ActionEvent event) throws IOException {
+        janelaUtils.mudarTela(event, telaNotificacoes, "Notificações");
         // FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/uepb/sistemarestaurante/views/Notificacoes.fxml"));
-        // Parent root = loader.load();
-        // NotificacaoController controller = loader.getController();
-        // controller.setGarcomAtual(garcomAtual);
-        // Stage stage = (Stage) deslogar.getScene().getWindow();
-        // stage.setScene(new Scene(root));
-        // stage.show();
+
     }
 }

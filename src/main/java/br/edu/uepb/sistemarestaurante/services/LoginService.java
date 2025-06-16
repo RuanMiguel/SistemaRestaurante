@@ -26,6 +26,8 @@ public class LoginService {
         return garcomLogado;
     }
 
-
+    public static void logout() {
+//        this.garcomLogado = null;
+    }
 
 }

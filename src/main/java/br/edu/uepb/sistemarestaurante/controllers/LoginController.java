@@ -61,13 +61,15 @@ public class LoginController {
             if (tipo == TipoFuncionario.GARCOM) {
                 System.out.println("Tela Garcom");
                 System.out.println("O garçom logado é: " + ls.getGarcomLogado());
-                String painelMesa = "/br/edu/uepb/sistemarestaurante/views/PainelMesa.fxml";//mudei
-                janelaUtils.mudarTela(event, painelMesa, "Pedidos à cozinha");//mudei
+                String painelMesa = "/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml";//mudei
+                janelaUtils.mudarTela(event, painelMesa, "Pedidos da Mesa");//mudei
 
             } else if (tipo == TipoFuncionario.COZINHA){
                 String janelaCozinha = "/br/edu/uepb/sistemarestaurante/views/CozinhaView.fxml";
                 janelaUtils.mudarTela(event, janelaCozinha, "Pedidos à cozinha");
                 System.out.println("Tela Cozinha");
+            } else {
+                System.out.println("CAIU AQUI");
             }
         }
     }
