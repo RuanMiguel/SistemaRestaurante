@@ -9,6 +9,7 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Ruan Miguel
  * @author Letícia Cruz
  */
+
 public class GerenciadorCozinha extends Funcionario {
 	/** Identificador fixo do gerenciador da cozinha. */
 	private static final String ID_FIXO = "cozinha";
