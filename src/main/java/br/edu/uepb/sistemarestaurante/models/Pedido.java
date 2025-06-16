@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Representa um pedido feito no sistema de restaurante.
- * Contém uma lista de itens pedidos, horário de criação, status atual e um identificador único.
+ * Contém uma lista estática com todos os pedidos do restaurante, uma lista de itens pedidos, horário de criação, status atual e um identificador único.
  *
  * @author Laryssa D. Ramos
  */
@@ -17,6 +17,7 @@ public class Pedido {
     private StatusPedido status;
     private final LocalTime HORARIO;
     private List<ItemPedido> itens = new ArrayList<ItemPedido>();
+    private static List<Pedido> todosPedidos = new ArrayList();
 
     /**
      * Construtor padrão.
@@ -140,5 +141,25 @@ public class Pedido {
             total += item.CalcularSubtotal();
         }
         return total;
+    }
+
+    /**
+     * Diz se o pedido está ativo com base em seu status.
+     * <p>Retorna {@code True} caso o status esteja {@code PENDENTE} ou {@code PREPARANDO}.</p>
+     * <p>Retorna {@code False} caso contrário.</p>
+     *
+     * @return estado de atividade do pedido com base em seu status
+     */
+    public boolean isAtivo(){
+        return status == StatusPedido.PENDENTE || status == StatusPedido.PREPARANDO;
+    }
+
+    /**
+     * Adiciona um pedido à lista referente a todos os pedidos do restaurante.
+     *
+     * @param p o pedido a ser adicionado
+     */
+    public static void adicionarATodosPedidos(Pedido p){
+        todosPedidos.add(p);
     }
 }
