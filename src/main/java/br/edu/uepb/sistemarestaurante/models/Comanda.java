@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Comanda {
     private static int qtd_instancias;
+    private static List<Comanda> comandas = new ArrayList<>();
     private final int ID;
     private Mesa mesa;
     private Garcom garcom;
@@ -14,6 +15,7 @@ public class Comanda {
         this.pedidos = new ArrayList<>();
         qtd_instancias++;
         this.ID = qtd_instancias;
+        comandas.add(this);
     }
 
     public Comanda(Mesa mesa, Garcom garcom) {
@@ -41,13 +43,7 @@ public class Comanda {
         }
     }
 
-    public double caucularTotal(){
-        double total = 0;
-        for(Pedido pedido : pedidos){
-            total += pedido.calcularTotal();
-        }
-        return total;
-    }
+
 
     //GETTERS
 
