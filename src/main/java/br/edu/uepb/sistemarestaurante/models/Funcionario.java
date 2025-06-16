@@ -2,7 +2,8 @@ package br.edu.uepb.sistemarestaurante.models;
 
 /**
  * Classe abstrata que representa um funcionário genérico do sistema de restaurante.
- * Serve como base para diferentes tipos de funcionários com responsabilidades específicas.
+ * Serve como base para tipos de funcionários diferentes (Garçom e Gerenciador da Cozinha)
+ * e cada um com uma responsabilidade específica.
  *
  * @author Marcella Viana
  * @author Ruan Miguel
