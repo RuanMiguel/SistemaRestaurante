@@ -31,9 +31,16 @@ public class ControladorListaPedidos {
     @FXML
     private VBox contentVBox;
 
+
     /**
-     * Método chamado para inicializar o controlador após o carregamento do FXML.
-     * Pode ser usado para configurar a interface ou carregar dados iniciais.
+     * Método para adicionar um pedido à lista de pedidos exibida na interface.
+     * Cria uma nova VBox para o pedido, adiciona os detalhes do pedido e os itens,
+     * e então adiciona essa VBox ao container de pedidos.
+     *
+     * @param horario Horário do pedido
+     * @param status Status do pedido (ex: "Pendente", "Em Preparação", "Entregue")
+     * @param itens Lista de itens do pedido
+     * @param total Valor total do pedido
      */
     public void adicionarPedido(String horario, String status, List<ItemPedido> itens, double total) {
         VBox pedidoBox = new VBox(5);

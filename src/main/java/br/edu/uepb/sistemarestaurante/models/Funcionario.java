@@ -9,9 +9,15 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Ruan Miguel
  */
 public abstract class Funcionario {
-	private final String id;     // Identificador único do funcionário
-	private final String senha;  // Senha de acesso do funcionário
-
+	/** Atributos da classe Funcionario:
+	 * - id: Identificador único do funcionário
+	 * - senha: Senha de acesso do funcionário
+	 */
+	private final String id;
+	/** * Senha de acesso do funcionário.
+	 * Utilizada para autenticação e autorização no sistema.
+	 */
+	private final String senha;
 	/**
 	 * Construtor protegido para a classe abstrata Funcionario.
 	 *

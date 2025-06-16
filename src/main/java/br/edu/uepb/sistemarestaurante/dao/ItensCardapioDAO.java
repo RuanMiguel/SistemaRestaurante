@@ -11,42 +11,21 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Classe responsável por acessar os arquivos de dados dos itens do cardápio.
- * Realiza a leitura dos arquivos de texto com as informações de pratos, bebidas e sobremesas,
- * e converte essas informações em objetos do tipo {@link ItemCardapio}.
+ * Classe responsável por acessar os dados dos itens do cardápio do restaurante.
+ * Fornece métodos para listar itens de acordo com o tipo de cardápio e subcardápio selecionados.
  *
- * Os arquivos devem estar disponíveis no classpath:
- * <ul>
- * <li>/br/edu/uepb/sistemarestaurante/pratos.txt</li>
- * <li>/br/edu/uepb/sistemarestaurante/bebidas.txt</li>
- * <li>/br/edu/uepb/sistemarestaurante/sobremesas.txt</li>
- * </ul>
- *
- * Cada linha dos arquivos deve estar no seguinte formato:
- * <ul>
- * <li>Pratos: nome;preço;tipo</li>
- * <li>Bebidas: nome;preço;volume;tipo</li>
- * <li>Sobremesas: nome;preço</li>
- * <ul>
- *
- * @author Laryssa D. Ramos
+ * @author Letícia B.M. da Cruz
+ * @author Marcella Viana Lins
  */
 public class ItensCardapioDAO {
 
     /**
-     * Retorna uma lista de itens do cardápio com base na seleção do cardápio principal e do subcardápio.
+     * Lista os itens do cardápio de acordo com o tipo de cardápio e subcardápio selecionados.
+     * Lê os dados dos arquivos de texto correspondentes e cria objetos dos tipos específicos de itens.
      *
-     * Lê o conteúdo dos arquivos de texto conforme o tipo de cardápio selecionado:
-     * <ul>
-     *     <li>Se {@code cardapioSelecionado} for "Pratos", o metodo busca no arquivo {@code pratos.txt}.</li>
-     *     <li>Se for "Bebidas", busca em {@code bebidas.txt}.</li>
-     *     <li>Se for "Sobremesas", busca em {@code sobremesas.txt}, e {@code subCardapioSelecionado} será ignorado (pode ser {@code null}).</li>
-     * </ul>
-     *
-     * @param cardapioSelecionado o tipo de cardápio selecionado (Pratos, Bebidas ou Sobremesas)
-     * @param subCardapioSelecionado o subtipo de item, que pode ser o Tipo de prato (Entradas, Principais, Acompanhamentos ou Pratos Feitos), o Tipo de bebida (Àguas, Sucos, Refrigerantes ou Alcoólicas), ou {@code null} se o cardápio for Sobremesas
-     * @return uma lista de itens do cardápio que correspondem à seleção
-     * @throws NullPointerException se o arquivo correspondente não for encontrado no classpath
+     * @param cardapioSelecionado O tipo de cardápio selecionado (Pratos, Bebidas, Sobremesas)
+     * @param subCardapioSelecionado O subcardápio selecionado (ex: tipo de prato, volume da bebida)
+     * @return Uma lista de itens do cardápio correspondentes ao filtro aplicado
      */
     public List<ItemCardapio> listarItensCardapio(String cardapioSelecionado, String subCardapioSelecionado){
         List<ItemCardapio> itens = new ArrayList<>();

@@ -5,10 +5,8 @@ import javafx.scene.control.Alert;
 /**
  * Classe utilitária para exibição de alertas e mensagens informativas na tela.
  *
- * <p>
  * Oferece métodos estáticos para mostrar uma janela de alerta do tipo <strong>Warning</strong> ou <strong>Information</strong>,
  * com título e mensagem personalizados.
- * </p>
  *
  * @author Laryssa D. Ramos
  */
@@ -19,7 +17,6 @@ public class alertaUtils {
      *
      * @param titulo   o título da janela de alerta
      * @param mensagem o texto da mensagem a ser exibida no conteúdo do alerta
-     * @param message
      */
     public static void mostrarAlerta(String titulo, String mensagem) {
         Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -10,7 +10,6 @@ import java.util.List;
  * @author Marcella Viana da Silva Lins
  * @author Ruan Miguel
  */
-
 public class Comanda {
     private static int qtd_instancias;
     private static List<Comanda> comandas = new ArrayList<>();
@@ -46,10 +45,12 @@ public class Comanda {
         qtd_instancias++;
         this.ID = qtd_instancias;
     }
+
     /**
-     * Método estático para obter todas as comandas criadas.
+     * Método para adicionar um pedido à comanda.
+     * O pedido é adicionado à lista de pedidos da comanda e uma mensagem é exibida.
      *
-     * @return Lista de todas as comandas
+     * @param pedido O pedido a ser adicionado à comanda
      */
     public void adicionarPedido(Pedido pedido) {
         pedidos.add(pedido);

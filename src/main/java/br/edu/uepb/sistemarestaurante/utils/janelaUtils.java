@@ -14,11 +14,9 @@ import java.util.function.Consumer;
 /**
  * Classe utilitária para gerenciar mudanças de telas usando FXML.
  *
- * <p>
  * Essa classe oferece métodos estáticos para carregar uma nova cena a partir de um arquivo FXML,
  * definindo o título da janela e ajustando seu tamanho para a tela inteira.
  * Também permite aplicar um handler no controller da nova tela, caso necessário.
- * </p>
  *
  * @author Leticia B. M. da Cruz
  * @author Laryssa D. Ramos

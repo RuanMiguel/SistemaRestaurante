@@ -7,8 +7,21 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Laryssa D. Ramos
  */
 public class ItemPedido {
+    /** Atributos da classe ItemPedido:
+     * - item: O item do cardápio que foi pedido
+     * - qtd: Quantidade do item pedida
+     * - obs: Observações adicionais do cliente sobre o item
+     */
     private ItemCardapio item;
+   /**
+     * Quantidade do item pedida.
+     * Representa quantas unidades do item foram solicitadas pelo cliente.
+     */
     private int qtd;
+    /**
+     * Observações adicionais do cliente sobre o item.
+     * Podem incluir preferências, alergias ou instruções especiais.
+     */
     private String obs;
 
     /**

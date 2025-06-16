@@ -17,14 +17,13 @@ public class LoginService {
     private Garcom garcomLogado;
 
     /**
-     * Realiza a autenticação de um funcionário.
+     * Autentica um funcionário com base no ID de usuário e senha.
      *
-     * @param idUsuario identificador do usuário (ID para garçons, "cozinha" para gerenciador de cozinha)
-     * @param senha senha de acesso
-     * @return {@link TipoFuncionario} correspondente ao tipo de perfil autenticado,
-     *         ou {@code null} se as credenciais forem inválidas
+     * <p>Verifica se o ID e senha correspondem a um garçom ou ao gerenciador da cozinha.</p>
      *
-     * @implNote A credencial padrão para cozinha é idUsuario="cozinha" e senha="1234"
+     * @param idUsuario ID do usuário (garçom ou cozinha)
+     * @param senha Senha do usuário
+     * @return TipoFuncionario correspondente ao usuário autenticado, ou {@code null} se não for encontrado
      */
     public TipoFuncionario autenticarFuncionario(String idUsuario, String senha) {
         if (idUsuario.equals("cozinha") && senha.equals("1234")) {
@@ -41,9 +40,12 @@ public class LoginService {
     }
 
     /**
-     * Acessibilidade para identificador do garçom atualmente logado.
+     * Retorna o garçom atualmente logado.
      *
-     * @return ID do garçom logado, ou {@code null} se nenhum garçom estiver autenticado
+     * <p>Este método é usado para acessar os dados do garçom autenticado
+     * após um login bem-sucedido.</p>
+     *
+     * @return Garcom que está logado, ou {@code null} se nenhum garçom estiver logado
      */
     public Garcom getGarcomLogado() {
         return garcomLogado;

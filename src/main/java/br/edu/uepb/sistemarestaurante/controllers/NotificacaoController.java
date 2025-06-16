@@ -81,8 +81,10 @@ public class NotificacaoController {
     }
 
     /**
-     * Método para marcar um pedido como entregue.
-     * Obtém os pedidos pendentes e atualiza o status de cada um.
+     * Método para pegar os pedidos pendentes.
+     * Deve ser implementado conforme a lógica de negócios.
+     *
+     * @return Lista de pedidos pendentes
      */
     private List<Pedido> pegarPedidosPendentes() {
         // Implemente conforme sua lógica de negócios

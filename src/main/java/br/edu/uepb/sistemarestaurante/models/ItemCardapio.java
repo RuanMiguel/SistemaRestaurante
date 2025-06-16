@@ -14,7 +14,14 @@ import java.util.List;
  * @see Bebida
  */
 public abstract class ItemCardapio {
+    /** Atributos da classe ItemCardapio:
+     * - nome: Nome do item do cardápio
+     * - preco: Preço do item do cardápio
+     */
     private String nome;
+    /** Preço do item do cardápio.
+     * Representa o custo do item em reais (R$).
+     */
     private double preco;
 
     /**

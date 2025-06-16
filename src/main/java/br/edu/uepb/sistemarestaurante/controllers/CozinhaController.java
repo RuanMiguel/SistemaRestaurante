@@ -27,11 +27,11 @@ import java.util.List;
  * @author Letícia B.M. da Cruz
  */
 public class CozinhaController {
-    /* * Caminhos para as views FXML utilizadas neste controlador.
+    /** Caminhos para as views FXML utilizadas neste controlador.
      * Esses caminhos são relativos ao diretório de recursos do projeto.
      */
     private static final String CAMINHO_LOGIN_VIEW = "/br/edu/uepb/sistemarestaurante/views/LoginView.fxml";
-    /* * Caminho para a view FXML que representa cada pedido na cozinha.
+    /** Caminho para a view FXML que representa cada pedido na cozinha.
      * Este caminho deve apontar para o arquivo FXML que define a interface de um pedido na cozinha.
      */
     private static final String CAMINHO_PEDIDO_COZINHA_VIEW = "/br/edu/uepb/sistemarestaurante/views/PedidoCozinhaView.fxml";
@@ -40,7 +40,6 @@ public class CozinhaController {
      * Botão para deslogar da cozinha.
      * Aciona a mudança de tela para a tela de login.
      */
-
     @FXML
     private Button botaoVoltar;
     /**
@@ -56,6 +55,10 @@ public class CozinhaController {
      */
 
     private ObservableList<Pedido> pedidosObservable = FXCollections.observableArrayList();
+    /**
+     * Gerenciador de cozinha responsável por manipular os pedidos.
+     * Este gerenciador pode ser usado para realizar operações adicionais nos pedidos.
+     */
     private GerenciadorCozinha gc = new GerenciadorCozinha();
 
     /**
@@ -110,7 +113,7 @@ public class CozinhaController {
                 containerPedidos.getChildren().add(pedidoBox);
             }
         } catch (IOException e) {
-            alertaUtils.mostrarAlerta("Erro", "Falha ao carregar pedidos", e.getMessage());
+            alertaUtils.mostrarAlerta("Erro", "Falha ao carregar pedidos");
         }
     }
     /**

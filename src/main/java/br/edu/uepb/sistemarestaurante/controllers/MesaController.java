@@ -32,7 +32,7 @@ public class MesaController {
     @FXML
     private Button botaoAddPedido;
 
-    /* * Botão para fechar a comanda da mesa.
+    /** Botão para fechar a comanda da mesa.
      * Redireciona para o painel de mesas após fechar a comanda.
      */
     @FXML
@@ -84,11 +84,11 @@ public class MesaController {
      * Esses caminhos são relativos ao diretório de recursos do projeto.
      */
     private String painelMesas = "/br/edu/uepb/sistemarestaurante/views/PainelMesas.fxml";
-    /* * Caminho para a view FXML que representa a tela de adicionar um novo pedido.
+    /** Caminho para a view FXML que representa a tela de adicionar um novo pedido.
      * Este caminho deve apontar para o arquivo FXML que define a interface de um novo pedido.
      */
     private String janelaNovoPedido = "/br/edu/uepb/sistemarestaurante/views/NovoPedido.fxml";
-    /* * Caminho para a view FXML que representa a tela de vizualização dos pedidos da comanda.
+    /** Caminho para a view FXML que representa a tela de vizualização dos pedidos da comanda.
      * Este caminho deve apontar para o arquivo FXML que define a interface de vizualização dos pedidos.
      */
     private String janelaVerPedidos = "/br/edu/uepb/sistemarestaurante/views/TelaPedidos.fxml";

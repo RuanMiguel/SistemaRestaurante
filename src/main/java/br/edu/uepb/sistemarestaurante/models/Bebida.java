@@ -7,7 +7,13 @@ package br.edu.uepb.sistemarestaurante.models;
  * @author Letícia B.M. da Cruz
  */
 public class Bebida extends ItemCardapio {
+    /**
+     * Enumeração que define os tipos de bebidas disponíveis.
+     */
     private TipoBebida tipo;
+   /**
+     * Enumeração que define os volumes disponíveis para as bebidas.
+     */
     private VolumeBebida volume;
 
     /**
