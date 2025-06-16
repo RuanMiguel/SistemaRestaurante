@@ -6,7 +6,7 @@ package br.edu.uepb.sistemarestaurante.models;
  * e cada um com uma responsabilidade específica.
  *
  * @author Marcella Viana
- * @author Ruan Miguel
+ * @author Ruan Miguel da Silva Costa
  */
 public abstract class Funcionario {
 	/** Atributos da classe Funcionario:
