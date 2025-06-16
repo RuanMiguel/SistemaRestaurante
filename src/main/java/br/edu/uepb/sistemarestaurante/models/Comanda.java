@@ -8,7 +8,7 @@ import java.util.List;
  * Possui métodos para adicionar pedidos, listar pedidos e calcular o total da comanda.
  *
  * @author Marcella Viana da Silva Lins
- * @author Ruan Miguel
+ * @author Ruan M da S Costa
  */
 public class Comanda {
     private static int qtd_instancias;
